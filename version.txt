@@ -1,0 +1,154 @@
+Ionic Material Design
+==========================================
+
+Version 4.2 - Released 24 June 2016
+
+==========================================
+Plugin :
+- Add plugin cordova-plugin-whitelist to avoid http 404 errors when your app tries to make network requests on android.
+——————————————————————————————————————————
+CSS :
+- Add hidden overflow-x to class product-slide-list to fix horizontal scroll bar appear on page load.
+
+==========================================
+
+Version 4.1 - Released 30 May 2016
+
+==========================================
+Update Framework :
+- Update cordova to lasted version.
+- Remove fix plugin version.
+——————————————————————————————————————————
+Update Feature :
+- Change plugin AdMob to AdMob Pro version for use more stable version.
+——————————————————————————————————————————
+Plugin :
+- Because of plugin update make npm throw error while installing plugin. We are changed below plugin to stable version :
+- Change plugin https://github.com/floatinghotpot/cordova-plugin-admob.git (AdMob) to cordova-plugin-admobpro (AdMob Pro)
+- Change plugin de.appplant.cordova.plugin.email-composer@0.8.2 to cordova-plugin-email-composer
+- Change plugin org.apache.cordova.splashscreen@1.0.0 to cordova-plugin-splashscreen
+- Removed unused plugin cordova-plugin-googleplayservices@19.0.3 because of changed plugin AdMob to AdMob Pro version.
+——————————————————————————————————————————
+Documentation :
+- Update content of section D-4) Add Ionic Plugin
+    Change plugin https://github.com/floatinghotpot/cordova-plugin-admob.git (AdMob) to cordova-plugin-admobpro (AdMob Pro)
+    Change plugin de.appplant.cordova.plugin.email-composer@0.8.2 to cordova-plugin-email-composer
+    Change plugin org.apache.cordova.splashscreen@1.0.0 to cordova-plugin-splashscreen
+    Removed unused plugin cordova-plugin-googleplayservices@19.0.3 because of changed plugin AdMob to AdMob Pro version.
+- Update content of section D-7 Android Build
+    Add new instruction for build AdMob Pro in android to avoid build error.
+- Update content of section D-13) Update project to latest version
+    Add new content of file and resource that update in this version.
+-   Update content of section M) Support
+    Add new content about devise size
+- Update content of section J-2-2) Facebook
+    Update new content of Facebook API Registration according from Facebook update.
+
+==========================================
+
+Version 4 - Released 24 February 2016
+
+==========================================
+New Feature :
+- Show popup dialog before application close when tap Back Button on android.
+- Make the side menu close when swipe left on side menu.
+- Make the side menu close when tap Back Button on android.
+- Make the bottom sheet close when tap Back Button on android.
+- Make the popup dialog close when tap Back Button on android.
+- Make the md-menu close when tap Back Button on android.
+- Make the md-select close when tap Back Button on android.
+——————————————————————————————————————————
+Update Feature :
+- SQLite contract list page will show grid with md-menu by default.
+——————————————————————————————————————————
+Documentation :
+- Update content of section D-4) Add Ionic Plugin
+    1.Update plugin cordova-plugin-inappbrowser to version 1.1.3
+    2.Change cordova-plugin-splashscreen plugin to org.apache.cordova.splashscreen to support new version of Android and IOS
+    3.Remove section of About local notifications plugin Because the probelm has been fixed.
+- Remove content of section Plugin that will not working on El Capitan, Xcode 7 (Only IOS) Because the probelm has been fixed.
+- Add new section Update project to latest version for project update instruction.
+- Add new content of section Support
+
+==========================================
+
+Version 3.3 - Released 08 February 2016
+
+==========================================
+Documentation :
+- Update content of section D-4) Add Ionic Plugin
+   1.Fix version of cordova plugin to avoid plugin update not compatible with framework make project build failed.
+   2.Change plugin cordova-plugin-inappbrowser to version 1.1.1 because of version 1.1.2 have error about callback url.
+   3.Add new section About local notifications plugin
+     - For IOS Build from Mac OS Version that is not : El Capitan
+     - For Android Build (Mac and Windows)
+- Update new content of section K) Known Issues : Plugin that will not working on El Capitan, Xcode 7 (Only IOS).
+   1.Flash Light
+   2.Image Picker
+   3.Send Text Messages
+
+==========================================
+
+Version 3.2 - Released 10 January 2016
+
+==========================================
+Plugin :
+- Change ionic plugin keyboard to stable version from com.ionic.keyboard to ionic-plugin-keyboard
+- Add new googleplayservices plugin to supprot dependencies update of AdMob plugin.
+——————————————————————————————————————————
+Update package.json File :
+- Update dependencies and devDependencies of gulp-sass from version ^1.3.3 to ^2.0.0 for support NodeJs version > 4.0.0
+——————————————————————————————————————————
+Documentation :
+- Update content of section D-1) Installing Ionic Framework to using NodeJs LTS version to avoid cordova plugin issue.
+- Add new content of section D-1) Installing Ionic Framework about instruction for Mac OS El Capitan to fix issue of
+  cordova when add platform then it will get failed return (cordova keeps a cached version in your ${HOME}/.cordova folder.)
+
+==========================================
+
+Version 3.1 - Released 9 December 2015
+
+==========================================
+JavaScript libraries :
+- Update ngcordova to Version 0.1.23
+——————————————————————————————————————————
+Plugin :
+- Change inappbrowser plugin to stable version
+  from org.apache.cordova.inappbrowser to cordova-plugin-inappbrowser
+——————————————————————————————————————————
+Update :
+- Update controller of AdMob to compatible with last updated of AdMob Plugin.
+——————————————————————————————————————————
+Documentation :
+- Update content of section D-1 because of the latest version of cordova is not stable.
+  We recommend you to use cordova version 5.3.3 for avoiding plugin installation issue.
+- Update content of section D-4 change link of inappbrowser plugin to stable version
+  from org.apache.cordova.inappbrowser to cordova-plugin-inappbrowser
+
+==========================================
+
+Version 3.0 - Released 4 November 2015
+
+==========================================
+New Feature :
+- Android Map Connect.
+- IOS Map Connect.
+- Setting for Enable/Disable view animation.
+——————————————————————————————————————————
+Performance :
+- Improve application performance by add Crosswalk Browser for Android.
+- Improve view content and add new setting section for Enable/Disable view animation.
+——————————————————————————————————————————
+Update :
+- Update toggle left Menu to enable animation on IOS and disable on Android.
+——————————————————————————————————————————
+Plugin :
+- Change SQLite Plugin to https://github.com/litehelpers/Cordova-sqlite-storage.git
+- Add new plugin cordova-plugin-transport-security to allow 'Arbitrary Loads' by adding
+  a declaration to the Info.plist file to bypass the Xcode 7 and iOS 9 App Transport
+  Security.
+——————————————————————————————————————————
+Documentation :
+- Add new section for detail of IOS Map Connect J-6-1
+- Add new section for detail of Android Map Connect J-6-2
+——————————————————————————————————————————
