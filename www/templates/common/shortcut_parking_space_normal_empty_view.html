@@ -1,0 +1,49 @@
+<md-bottom-sheet class="md-list md-has-header" id="bottom-sheet_parking_blue" scroll="true">
+    <div layout="row" ng-click="navigateTo('app.parking_details',marker)">
+        <md-list flex="">
+            <section>
+                <md-subheader class="md-primary" style="font-size: 16px;font-weight: bold;">
+                    {{marker.parking_space.name}}
+                </md-subheader>
+                <md-list layout-padding="">
+                    <md-list-item class="md-3-line">
+                        <img class="md-avatar" ng-src="{{marker.img}}" style="border-radius: initial;margin-right: 5px;">
+                            <div class="md-list-item-text">
+                                <div class="row">
+                                    <p>
+                                        <i aria-hidden="true" class="fa fa-location-arrow parking_blue_color">
+                                        </i>
+                                        ：{{marker.parking_space.distance | distance }}km
+                                    </p>
+                                </div>
+                                <div class="row">
+                                    <div class="col-66">
+                                        <p>
+                                            <i aria-hidden="true" class="fa fa-clock-o parking_blue_color">
+                                            </i>
+                                            : {{marker.parking_space.utilization_start_time}}-{{marker.parking_space.utilization_end_time}}
+                                        </p>
+                                    </div>
+                                    <div class="col-33">
+                                        <span class="b-price_tag">
+                                            ¥{{marker.parking_space.max_price | number:0}}/日
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <p>
+                                        <i aria-hidden="true" class="fa fa-map parking_blue_color">
+                                        </i>
+                                        ：{{marker.parking_space.prefecture}}{{marker.parking_space.city}}{{marker.parking_space.address}}
+                                    </p>
+                                </div>
+                            </div>
+                        </img>
+                    </md-list-item>
+                </md-list>
+            </section>
+        </md-list>
+    </div>
+    <!--list section-->
+    <!--end list section-->
+</md-bottom-sheet>

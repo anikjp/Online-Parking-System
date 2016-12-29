@@ -1,0 +1,26 @@
+<ion-modal-view class="ionic-datepicker">
+  <ion-header-bar class="title" ng-class="headerClass">
+    <div ng-class="headerClass" ng-bind="header"></div>
+  </ion-header-bar>
+  <ion-content>
+    <div>
+
+      <ng-include src="'template-body.html'"></ng-include>
+
+    </div>
+
+  </ion-content>
+
+  <ion-footer-bar ng-class="modalFooterClass">
+    <div class="row no-padding btns-right-modal">
+      <md-button class="button "
+              ng-repeat="btn in btns"
+              ng-click="btn.onClickModal()"
+              ng-disabled="btn.sType == 'ok' && errors.len > 0"
+              ng-class="btn.type">
+        {{ btn.text }}
+      </md-button>
+    </div>
+  </ion-footer-bar>
+
+</ion-modal-view>

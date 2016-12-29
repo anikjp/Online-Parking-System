@@ -1,0 +1,52 @@
+<ion-view title="閲覧履歴">
+    <ion-nav-buttons side="right">
+        <button class="button button-assertive" ng-if="!isIOS" ng-show="history_list.length>0">
+            Total :  {{ history_list.length }} 件
+        </button>
+    </ion-nav-buttons>
+    <ion-content class="{ isIOS ? has-header has-footer : has-header }"  id="location-feed-content">
+        <ion-list can-swipe="true" ng-if="history_list.length>0">
+            <ion-item class="animate-repeat item item-avatar item-icon-right" gesture-type="swipeRight" ng-click="navigateTo2(hl.fulldata)" ng-repeat="hl in history_list" on-swipe-right="swipeRight()" type="item-text-wrap">
+                <img ng-src="{{ hl.fulldata.parkingPicture[0] }}">
+                    <h2>
+                        {{ hl.fulldata.name }}
+                    </h2>
+                    <p>
+                        {{ hl.fulldata.prefecture }}{{ hl.fulldata.city }}{{ hl.fulldata.address }}
+                    </p>
+                    <p>
+                        駐車可能車両
+                    </p>
+                    <p>
+                        {{ hl.fulldata.vehiclePos }}
+                    </p>
+                    <span class="price_tag" ng-hide="hl.fulldata.monthly_price==0">
+                        ¥{{hl.fulldata.monthly_price | number:0}}／月～
+                    </span>
+                    <i class="icon ion-chevron-right icon-accessory">
+                    </i>
+                    <ion-option-button class="button-assertive" ng-click="remove(hl)" side="right">
+                        削除
+                    </ion-option-button>
+                </img>
+            </ion-item>
+        </ion-list>
+        <div class="card padding" ng-if="history_list.length==0">
+            <div class="item item-text-wrap" style="text-align: center;">
+               <i class="fa fa-exclamation-circle fa-4x" aria-hidden="true"></i>
+            </div>
+            <div class="item item-text-wrap">
+                閲覧履歴リストに1件もデータがありません。
+            </div>
+        </div>
+    </ion-content>
+    <ion-footer-bar align-title="right" class="bar-assertive" ng-if="isIOS">
+        <a class="button back-button buttons button-clear header-item nav-back-btn" ng-click="$ionicGoBack()">
+            <i class="ion-android-arrow-back">
+            </i>
+        </a>
+        <button class="button"　 ng-show="history_list.length>0">
+            Total :  {{ history_list.length }} 件
+        </button>
+    </ion-footer-bar>
+</ion-view>

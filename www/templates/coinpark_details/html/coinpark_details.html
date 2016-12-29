@@ -1,0 +1,78 @@
+<!--View Information-->
+<!--View name : coinpark_details-->
+<!--State name : app.coinpark_details-->
+<!--URL : #app/coinpark_details-->
+
+<ion-view title="{{targetdata.name}}">
+    <ion-nav-buttons side="left">
+      <a ng-click="$ionicGoBack()" class="button back-button buttons  button-clear header-item nav-back-btn">
+      <i class="ion-android-arrow-back"></i>
+      </a>
+   </ion-nav-buttons>
+    <!--restaurant section-->
+    <ion-content id="restaurant">
+        <!--restaurant content section-->
+        <div id="restaurant-content" style="margin: 0px;">
+          <md-whiteframe class="md-whiteframe-21dp" flex-sm="45" flex-gt-sm="35" flex-gt-md="25" layout layout-align="center center">
+<a href="{{targetdata.map_url}}" target="{{targetdata.map_url_target}}"><img ng-src="{{targetdata.map_image_url}}" style="width:100%" ng-click="openGoogleMap()"></a>
+</md-whiteframe>
+<div class="card" style="margin-top: 10px;">
+<md-whiteframe class="md-whiteframe-1dp" flex-sm="45" flex-gt-sm="35" flex-gt-md="25" layout layout-align="center center">
+<h5><i class="fa fa-exclamation-triangle" aria-hidden="true" style="color: #ffc900;"></i> ご予約出来ない駐車場です。</h5>
+</md-whiteframe>
+
+</div>
+                                
+<div class="item item-divider" style="font-weight: bold;color: #0d563e;">
+    駐車場基本情報</div>
+
+<div id="pricing-content" style="font-size: 12px; color: #0d563e;">
+<div class="row price-detail">
+<div class="col-33 package-name">
+駐車場タイプ
+
+</div>
+<div class="col-66 package-subscribe">
+時間貸し駐車場
+</div>
+</div>
+<div class="row price-detail">
+<div class="col-33 package-name">
+距離
+</div>
+<div class="col-66 package-subscribe">
+<span style="color: rgb(244,67,54);font-size: 17px;font-weight: bold;">{{targetdata.distance | distance }}</span>km
+</div>
+</div>
+<div class="row price-detail">
+<div class="col-33 package-name">
+住所
+</div>
+<div class="col-66 package-subscribe">
+{{targetdata.address}}
+</div>
+</div>
+<div class="row price-detail">
+<div class="col-33 package-name">
+駐車可能台数
+
+</div>
+<div class="col-66 package-subscribe">
+<span style="color: rgb(244,67,54);font-size: 17px;font-weight: bold;">{{targetdata.number}}</span>台
+</div>
+</div>
+</div>
+
+                     
+     </md-card-content>
+<div class="item item-divider" style="font-weight: bold;color: #0d563e;">
+    特徴</div>
+            <md-content md-theme="docs-dark" layout-gt-sm="row" layout-padding>
+              <p>{{targetdata.price_comment}}</p>
+  </md-content>  
+            
+
+
+            
+    </ion-content><!--end restaurant section-->
+</ion-view>

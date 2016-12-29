@@ -1,0 +1,201 @@
+<!--View Information-->
+<!--View name : Restaurant-->
+<!--State name : app.restaurant-->
+<!--URL : #app/restaurant-->
+
+<ion-view title="麻布中央マンション駐車場01">
+    <ion-nav-buttons side="left">
+      <a ng-click="$ionicGoBack()" class="button back-button buttons  button-clear header-item nav-back-btn">
+      <i class="ion-android-arrow-back"></i>
+      </a>
+   </ion-nav-buttons>
+   <ion-nav-buttons side="right">
+      <a class="button back-button buttons  button-clear header-item nav-back-btn">
+      <i class="fa fa-star" aria-hidden="true"></i>
+      </a>
+   </ion-nav-buttons>
+    <!--restaurant section-->
+    <ion-content id="restaurant">
+        <!--product slide section-->
+
+        <!--restaurant content section-->
+        <div id="restaurant-content" style="margin: 0px;">
+             <ion-scroll direction="x"  class="product-slide-list">
+                <div class="feed-list" style="height: 200px;padding: 0px;" >
+                    <div class="feed-item" ng-repeat="n in [42, 42, 43, 43] track by $index" style="width: 100%;margin-right: 0px;">
+                        <div class="hfij-slidebox-image" ng-if="item['meta-data'] !== 'else'" style="background-image: url('img/food_cover_01.png')">
+                            <div class="hfij-slidebox-title">
+                            駐車場及び周辺写真
+                        </div>
+                        </div>
+                    </div>
+               </div>
+            </ion-scroll>
+          <div class="card">
+  <div class="item item-divider">
+    麻布中央マンション駐車場01
+  </div>
+     <div class="row" >
+                <div class="col menu-header">
+                    <h1>
+                    <i class="fa fa-map-marker fa-2x" aria-hidden="true"></i> 東京都港区麻布台1-4-7 麻布中央マンション
+                    </h1>
+                </div>
+            </div>
+</div>
+                                <img ng-src="http://maps.googleapis.com/maps/api/staticmap?center=35.6575,139.769635712760623&zoom=15&size=600x200&markers=Clabel:S%7C35.6575,139.769635712760623&format=png&visual_refresh=true" style="width:100%" ng-click="openGoogleMap(restaurant['_ait-item_item-data'][0]['map'].address)">
+<div class="item item-divider" style="font-weight: bold;color: #0d563e;">
+    駐車場基本情報</div>
+
+<div id="pricing-content" style="font-size: 12px; color: #0d563e;">
+<div class="row price-detail">
+<div class="col-33 package-name">
+駐車場タイプ
+
+</div>
+<div class="col-66 package-subscribe">
+分譲マンション駐車場
+</div>
+</div>
+<div class="row price-detail">
+<div class="col-33 package-name">
+駐車可能車両
+
+</div>
+<div class="col-66 package-subscribe">
+軽自動車/小型車/中型車/ミドルルーフ/ハイルーフ/オートバイ
+</div>
+</div>
+<div class="row price-detail">
+<div class="col-33 package-name">
+駐車可能台数
+
+</div>
+<div class="col-66 package-subscribe">
+5台
+</div>
+</div>
+<div class="row price-detail">
+<div class="col-33 package-name">
+月極料金
+
+</div>
+<div class="col-66 package-subscribe">
+32400円
+</div>
+</div>
+</div>
+
+                     
+     </md-card-content>
+<div class="item item-divider" style="font-weight: bold;color: #0d563e;">
+    駐車場基本情報</div>
+            <md-content md-theme="docs-dark" layout-gt-sm="row" layout-padding>
+  <md-input-container class="md-block" flex-gt-sm style="margin: 0;">
+           <div layout="row" layout-align="space-between center">
+        <span style="margin-top: 0px;">車両タイプ</span>
+         <p style="margin-bottom: 0px;">選択してください</p>
+   <md-button  class="md-icon-button" ng-click="show_vehicle_type_model()">
+            <i class="fa fa-chevron-right "></i>
+        </md-button>
+      </div>
+<div layout="row" layout-align="space-between center">
+   <span style="margin-top: 0px;">利用日を選択</span>
+   <div class="padding-horizontal">
+     <ionic-multi-date-picker input-obj="datepickerObject">
+       <md-button  class="md-icon-button" >
+      <i class="fa fa-calendar fa-2x" aria-hidden="true"></i>
+      </md-button>
+     </ionic-multi-date-picker>
+   </div>
+ </div>
+    <md-chips >
+      <md-chip class="chip-items" ng-repeat="date in selectedDates">{{date | date : "dd/MM"  }}</md-chip>
+    </md-chips>  
+</md-input-container>
+  </md-content>  
+            
+
+
+            
+    </ion-content><!--end restaurant section-->
+
+
+    <script id="vehicle-type.html" type="text/ng-template">
+  <ion-modal-view>
+    <ion-header-bar class="bar-balanced material-background-nav-bar">
+        <button class="button button-clear" ng-click="close_vehicle_type_model()"> <i class="ion-android-arrow-back"></i></button>
+          <h1 class="title">ご乗車の車種</h1>
+          
+        </ion-header-bar>
+    <ion-content>
+         <md-content flex layout-padding>
+    <p>以下サイズ一覧は、あくまでも参考として御確認下さい。 オプション装着車、年式によって、上記サイズをオーバーする可能性がございます。必ずご利用になる駐車場の駐車可能サイズを御確認下さい。</p>
+    </md-content> 
+    <md-divider></md-divider>
+
+
+ <md-radio-group ng-model="data.vehicles" class="md-primary">
+
+        <md-radio-button  ng-value="1" ng-disabled="false " ng-class="{'md-align-top-left': $index==1}">
+           軽自動車<br>
+          <span class="ipsum" >
+            ワゴンＲ、ムーブ、ミラ、アルト、ウェイク、タントなど
+          </span>
+
+        </md-radio-button>
+        <md-divider md-inset></md-divider>
+
+        <md-radio-button  ng-value="2" ng-disabled=" false " ng-class="{'md-align-top-left': $index==2}">
+           小型車 <br>
+          <span class="ipsum" >
+           スイフト、デミオ、フィット、ヴィッツなど
+          </span>
+
+        </md-radio-button>
+        <md-divider md-inset></md-divider>
+
+
+         <md-radio-button  ng-value="3" ng-disabled=" false " ng-class="{'md-align-top-left': $index==3}">
+           中型車 <br>
+          <span class="ipsum" >
+           クラウン、プリウス、マークＸ、スカイライン、ＢＭＷ3、ベンツなど
+          </span>
+
+        </md-radio-button>
+        <md-divider md-inset></md-divider>
+
+
+         <md-radio-button  ng-value="4" ng-disabled=" false " ng-class="{'md-align-top-left': $index==4}">
+           大型車 <br>
+          <span class="ipsum" >
+           レクサスＬＳ600h、ベンツＳクラス、レジェンド、セルシオ、フーガなど
+          </span>
+
+        </md-radio-button>
+        <md-divider md-inset></md-divider>
+
+
+        <md-radio-button  ng-value="5" ng-disabled=" false " ng-class="{'md-align-top-left': $index==5}">
+           ミドルルーフ <br>
+          <span class="ipsum" >
+           ハリアー、ムラーノ、レクサスＲＸなど
+          </span>
+
+        </md-radio-button>
+        <md-divider md-inset></md-divider>
+        
+        <md-radio-button  ng-value="6" ng-disabled=" false " ng-class="{'md-align-top-left': $index==6}">
+           ハイルーフ <br>
+          <span class="ipsum" >
+          アルファード、エルグランド、ランドクルーザープラド、ヴェルファイアなど
+          </span>
+
+        </md-radio-button>
+
+    </md-radio-group>
+
+    </ion-content>
+  </ion-modal-view>
+</script>
+</ion-view>

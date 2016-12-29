@@ -1,0 +1,35 @@
+<md-bottom-sheet class="md-list md-has-header" id="bottom-sheet_coinpark" scroll="true">
+    <div layout="row" ng-click="navigateTocoinpark('app.coinpark_details',marker)">
+        <md-list flex="">
+            <section>
+                <md-subheader class="md-primary" style="font-size: 16px;font-weight: bold;color: #103374;margin-bottom: -20px;">
+                    {{marker.coinparking.name}}
+                </md-subheader>
+                <md-list layout-padding="">
+                    <md-list-item class="md-2-line">
+                        <img class="md-avatar" ng-src="img/icons/coinpark.png" style="border-radius: initial;margin-right: 5px;">
+                            <div class="md-list-item-text">
+                                <div class="row">
+                                    <p>
+                                        <i aria-hidden="true" class="fa fa-location-arrow coinpark_color">
+                                        </i>
+                                        ：{{marker.coinparking.distance | distance }}km
+                                    </p>
+                                </div>
+                                <div class="row">
+                                    <p>
+                                        <i aria-hidden="true" class="fa fa-map coinpark_color">
+                                        </i>
+                                        ：{{marker.coinparking.address}}
+                                    </p>
+                                </div>
+                            </div>
+                        </img>
+                    </md-list-item>
+                </md-list>
+            </section>
+        </md-list>
+    </div>
+    <!--list section-->
+    <!--end list section-->
+</md-bottom-sheet>

@@ -1,0 +1,149 @@
+<ion-side-menus enable-menu-with-back-views="true">
+    <ion-side-menu-content>
+        <ion-nav-bar class="bar-balanced material-background-nav-bar">
+            <ion-nav-buttons side="left">
+                <a class="button button-icon button-clear ion-navicon" menu-toggle="left" ng-click="toggleLeft()">
+                </a>
+            </ion-nav-buttons>
+        </ion-nav-bar>
+        <ion-nav-view name="menuContent">
+        </ion-nav-view>
+    </ion-side-menu-content>
+    <md-sidenav md-component-id="left" on-drag-left="closeSideNav()" on-swipe-left="closeSideNav()">
+        <!--menu section-->
+        <div class="material-background" id="toggle-menu-left-header">
+            <!--menu header section-->
+            <div class="menu-left-header">
+                <img class="user-img" ng-src="img/icon.png" style="border-radius: 0px; width:180px;">
+                </img>
+            </div>
+            <!--end menu header section-->
+        </div>
+        <!--menu content section-->
+        <!--menu content section-->
+        <ion-content id="toggle-menu-left-content">
+            <!--If device is android application will present below code.-->
+            <!--It will disable animation to better performance on android.-->
+            <!--list section-->
+            <div class="menu-list" ng-if="isAndroid">
+                <div class="row menu-item" ng-click="navigateTo('app.top_search')">
+                    <div class="col-33">
+                        <i class="fa fa-3x fa-search-plus color-primary">
+                        </i>
+                    </div>
+                    <div class="col-66">
+                        <span>
+                            現在地検索
+                        </span>
+                    </div>
+                </div>
+                <div class="row menu-item" ng-click="navigateTo('app.favourite_list')">
+                    <div class="col-33">
+                        <i class="fa fa-3x fa-star color-primary">
+                        </i>
+                    </div>
+                    <div class="col-66">
+                        <span>
+                            お気に入り駐車場
+                        </span>
+                    </div>
+                </div>
+                <div class="row menu-item" ng-click="navigateTo('app.history_list')">
+                    <div class="col-33">
+                        <i aria-hidden="true" class="fa fa-3x fa-clock-o color-primary">
+                        </i>
+                    </div>
+                    <div class="col-66">
+                        <span>
+                            閲覧履歴
+                        </span>
+                    </div>
+                </div>
+                <div class="row menu-item" ng-click="navigateTo('app.flashLight')">
+                    <div class="col-33">
+                        <i aria-hidden="true" class="fa fa-3x fa-clock-o color-primary">
+                        </i>
+                    </div>
+                    <div class="col-66">
+                        <span>
+                            お知らせ
+                        </span>
+                    </div>
+                </div>
+                <div class="row menu-item" ng-click="navigateTo('app.dropboxLogin')">
+                    <div class="col-33">
+                        <i aria-hidden="true" class="fa fa-3x fa-clock-o color-primary">
+                        </i>
+                    </div>
+                    <div class="col-66">
+                        <span>
+                            操作方法
+                        </span>
+                    </div>
+                </div>
+                <div class="row menu-item" ng-click="navigateTo('app.dropboxLogin')">
+                    <div class="col-33">
+                        <i aria-hidden="true" class="fa fa-3x fa-clock-o color-primary">
+                        </i>
+                    </div>
+                    <div class="col-66">
+                        <span>
+                            インフォメーション
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <!--If device is not Android application will present below code.-->
+            <!--It will show animation when selecting row.-->
+            <md-list ng-if="!isAndroid">
+                <md-list-item class="menu-list-item" ng-click="navigateTo('app.top_search')">
+                    <i class="fa fa-3x fa-search-plus color-primary">
+                    </i>
+                    <span>
+                        現在地検索
+                    </span>
+                </md-list-item>
+                <md-list-item class="menu-list-item" ng-click="navigateTo('app.favourite_list')">
+                    <i class="fa fa-3x fa-star color-primary">
+                    </i>
+                    <span>
+                        お気に入り駐車場
+                    </span>
+                </md-list-item>
+                <md-list-item class="menu-list-item" ng-click="navigateTo('app.history_list')">
+                    <i aria-hidden="true" class="fa fa-3x fa-clock-o color-primary">
+                    </i>
+                    <span>
+                        閲覧履歴
+                    </span>
+                </md-list-item>
+                <md-divider md-inset="">
+                </md-divider>
+                <md-list-item class="menu-list-item" ng-click="navigateTo('app.flashLight')">
+                    <i class="fa fa-envelope color-primary">
+                    </i>
+                    <span>
+                        お知らせ
+                    </span>
+                </md-list-item>
+                <md-list-item class="menu-list-item" ng-click="navigateTo('app.dropboxLogin')">
+                    <i class="fa fa-tasks color-primary">
+                    </i>
+                    <span>
+                        操作方法
+                    </span>
+                </md-list-item>
+                <md-list-item class="menu-list-item" ng-click="navigateTo('app.dropboxLogin')">
+                    <i class="fa fa-info-circle color-primary">
+                    </i>
+                    <span>
+                        インフォメーション
+                    </span>
+                </md-list-item>
+            </md-list>
+            <!--end list section-->
+        </ion-content>
+        <!--end menu content section-->
+        <!--end menu section-->
+    </md-sidenav>
+</ion-side-menus>

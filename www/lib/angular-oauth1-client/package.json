@@ -1,0 +1,32 @@
+{
+  "name": "angular-oauth1-client",
+  "author": {
+    "name": "Sean Fisher",
+    "email": "me@seafish.io"
+  },
+  "homepage": "https://github.com/seanfisher/angular-oauth1-client",
+  "bugs": {
+    "url": "https://github.com/seanfisher/angular-oauth1-client/issues"
+  },
+  "repository": "seanfisher/angular-oauth1-client",
+  "version": "0.1.12",
+  "description": "An OAuth1.0a client for AngularJS and Cordova/Ionic",
+  "keywords": [
+    "AngularJS",
+    "Angular",
+    "OAuth1",
+    "OAuth1.0a",
+    "Ionic"
+  ],
+  "license": "MIT",
+  "engines": {
+    "node": ">= 0.10.0"
+  },
+  "devDependencies": {
+    "grunt": "~0.4.5",
+    "grunt-contrib-jshint": "~0.10.0",
+    "grunt-contrib-watch": "~0.6.1",
+    "grunt-contrib-concat": "~0.4.0",
+    "grunt-contrib-uglify": "~0.5.0"
+  }
+}

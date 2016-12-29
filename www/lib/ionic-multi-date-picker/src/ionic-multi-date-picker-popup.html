@@ -1,0 +1,21 @@
+<!--<div class="ionic_datepicker_popup_btn_cancel" ng-click="popupCancel()">X</div>-->
+<div class="ionic-datepicker">
+
+  <div class="title ng-hide" ng-show="header.length > 0">
+    <h3 ng-class="headerClass" ng-bind="header"></h3>
+  </div>
+
+  <ng-include src="'template-body.html'"></ng-include>
+
+  <div class="btns-right-popup ng-hide" ng-show="!btnsIsNative">
+    <button class="button"
+            ng-repeat="btn in btns"
+            ng-click="btn.onTap()"
+            ng-disabled="btn.sType == 'ok' && errors.len > 0"
+            ng-class="btn.type">
+      {{ btn.text }}
+    </button>
+  </div>
+  <div class="clear"></div>
+
+</div>

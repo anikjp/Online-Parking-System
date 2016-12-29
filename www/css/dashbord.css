@@ -1,0 +1,456 @@
+/*List View Card Layout*/
+
+map {
+    width: 100%;
+    height: 100% !important;
+}
+
+.color-primary {
+    color: #517FA4 !important;
+    font-size: 25px !important;
+}
+
+#toggle-menu-left-header {
+    height: 100px!important;
+}
+
+#toggle-menu-left-content {
+    margin-top: 100px!important;
+}
+
+.parking_blue_color {
+    color: #03a9f4;
+}
+
+.parking_green_color {
+    color: #97c626;
+}
+
+.parking_gray_color {
+    color: #7b8080;
+    ;
+}
+
+.coinpark_color {
+    color: #103374;
+    ;
+}
+
+
+/* shortcut bottom sheet info*/
+
+#bottom-sheet {
+    padding: 0px 0px 80px 2px!important;
+    border-left: 5px solid;
+    border-left-color: #517FA4;
+}
+
+#bottom-sheet-right {
+    background-color: #ef473a;
+}
+
+#bottom-sheet-right button {
+    color: #f8f8f8;
+    height: 90%!important;
+    min-width: 0px;
+}
+
+#bottom-sheet-right button {
+    color: #7b8080;
+    height: 90%!important;
+    min-width: 0px;
+}
+
+#bottom-sheet_parking_gray {
+    padding: 0px 0px 80px 2px!important;
+    border-left: 6px solid;
+    border-left-color: #7b8080;
+}
+
+#bottom-sheet_parking_gray-right {
+    background-color: #7b8080;
+}
+
+#bottom-sheet_parking_gray-right button {
+    color: #7b8080;
+    height: 90%!important;
+    min-width: 0px;
+}
+
+#bottom-sheet_parking_blue {
+    padding: 0px 0px 80px 2px!important;
+    border-left: 6px solid;
+    border-left-color: #60b0e3;
+}
+
+#bottom-sheet_parking_blue-right {
+    background-color: #60b0e3;
+}
+
+#bottom-sheet_parking_blue-right button {
+    color: #60b0e3;
+    height: 90%!important;
+    min-width: 0px;
+}
+
+#bottom-sheet_parking_green {
+    padding: 0px 0px 80px 2px!important;
+    border-left: 6px solid;
+    border-left-color: #97c626;
+}
+
+#bottom-sheet_parking_green-right {
+    background-color: #97c626;
+}
+
+#bottom-sheet_parking_green-right button {
+    color: #97c626;
+    height: 90%!important;
+    min-width: 0px;
+}
+
+#bottom-sheet_coinpark {
+    padding: 0px 0px 80px 2px!important;
+    border-left: 6px solid;
+    border-left-color: #103374;
+}
+
+#bottom-sheet_coinpark-right {
+    background-color: #ef473a;
+}
+
+#bottom-sheet_coinpark-right button {
+    color: #f8f8f8;
+    height: 90%!important;
+    min-width: 0px;
+}
+
+.cal-btn-clr {
+    background-color: #607D8B!important;
+    color: white!important;
+    width: 25%!important;
+    font-size: 12px!important;
+    margin-top: 0px!important;
+}
+
+.cal-btn-today {
+    background-color: #3F51B5!important;
+    color: white!important;
+    width: 25%!important;
+    font-size: 12px!important;
+    margin-top: 0px!important;
+}
+
+.cal-btn-ok {
+    background-color: #4CAF50!important;
+    color: white!important;
+    width: 25%!important;
+    font-size: 12px!important;
+    margin-top: 0px!important;
+}
+
+.cal-btn-close {
+    background-color: #FF9800!important;
+    color: white!important;
+    width: 25%!important;
+    font-size: 12px!important;
+    margin-top: 0px!important;
+}
+
+.listdemoListControls md-divider {
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.listdemoListControls md-list {
+    padding-top: 0;
+}
+
+.listdemoListControls md-list-item > p, .listdemoListControls md-list-item > .md-list-item-inner > p, .listdemoListControls md-list-item .md-list-item-inner > p, .listdemoListControls md-list-item .md-list-item-inner > .md-list-item-inner > p {
+    -webkit-user-select: none;
+    /* Chrome all / Safari all */
+    -moz-user-select: none;
+    /* Firefox all */
+    -ms-user-select: none;
+    /* IE 10+ */
+    user-select: none;
+    /* Likely future */
+}
+
+.ipsum {
+    font-size: 12px;
+}
+
+.checkboxdemoBasicUsage div.flex-xs {
+    min-height: 40px;
+}
+
+.checkboxdemoBasicUsage .checkboxDemo1 div {
+    clear: both;
+}
+
+.checkboxdemoBasicUsage p {
+    padding-left: 8px;
+}
+
+.checkboxdemoBasicUsage fieldset.standard {
+    border-style: solid;
+    border-width: 1px;
+}
+
+.checkboxdemoBasicUsage legend {
+    color: #3F51B5;
+}
+
+.checkboxdemoBasicUsage legend code {
+    color: #3F51B5;
+    font-weight: normal;
+}
+
+.checkboxdemoBasicUsage .ipsum {
+    color: saddlebrown;
+}
+
+
+/*List View Card Layout*/
+
+.hfij-card-image {
+    position: relative;
+    width: 100%;
+    height: 170px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: top center;
+}
+
+
+/*List View Card title Layout */
+
+.hfij-card-title {
+    position: absolute;
+    bottom: 0;
+    margin-bottom: 0;
+    background: rgba(0, 0, 0, .4);
+    color: #FFF;
+    padding-top: .4em;
+    padding-bottom: .3em;
+    width: 100%;
+    font-weight: 700;
+    font-family: RobotoDraft, Roboto;
+}
+
+
+/*Restaurant slide item Box Layout*/
+
+.hfij-slidebox-image {
+    position: relative;
+    width: 100%;
+    height: 200px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: top center;
+}
+
+
+/*Restaurant slide item Box title Layout*/
+
+.hfij-slidebox-title {
+    position: absolute;
+    bottom: 0;
+    margin-bottom: 0;
+    background: rgba(0, 0, 0, 0.68);
+    color: #FFF;
+    padding-top: .4em;
+    padding-bottom: .3em;
+    width: 100%;
+    font-weight: 700;
+    text-align: center;
+    font-family: RobotoDraft, Roboto;
+}
+
+ng-map {
+    width: 100%;
+    height: 100% !important;
+}
+
+.scroll, .mapWrap {
+    height: 100%;
+}
+
+.slide-in-right {
+    -webkit-transform: translateX(100%);
+    transform: translateX(100%);
+}
+
+.slide-in-right.ng-enter, .slide-in-right > .ng-enter {
+    -webkit-transition: all cubic-bezier(0.1, 0.7, 0.1, 1) 400ms;
+    transition: all cubic-bezier(0.1, 0.7, 0.1, 1) 400ms;
+}
+
+.slide-in-right.ng-enter-active, .slide-in-right > .ng-enter-active {
+    -webkit-transform: translateX(0);
+    transform: translateX(0);
+}
+
+.slide-in-right.ng-leave, .slide-in-right > .ng-leave {
+    -webkit-transition: all ease-in-out 250ms;
+    transition: all ease-in-out 250ms;
+}
+
+.slider {
+    height: 100%;
+}
+
+.slider-slide {
+    padding-top: 80px;
+    color: #000;
+    background-color: #fff;
+    text-align: center;
+    font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+    font-weight: 300;
+}
+
+#logo {
+    margin: 30px 0px;
+}
+
+#list {
+    width: 170px;
+    margin: 30px auto;
+    font-size: 20px;
+}
+
+#list ol {
+    margin-top: 30px;
+}
+
+#list ol li {
+    text-align: left;
+    list-style: decimal;
+    margin: 10px 0px;
+}
+
+.b-price_tag {
+    float: right;
+    background-color: #60b0e3;
+    border-radius: 80px;
+    color: white;
+    font-weight: 500;
+    font-size: 11px;
+    text-align: center;
+    padding: 5px 10px;
+    margin-top: -25px;
+}
+
+.m-price_tag {
+    float: right;
+    background-color: #97c626;
+    border-radius: 80px;
+    color: white;
+    font-weight: 500;
+    font-size: 11px;
+    text-align: center;
+    padding: 5px 10px;
+    margin-top: -25px;
+}
+
+.g-price_tag {
+    float: right;
+    background-color: #7b8080;
+    border-radius: 80px;
+    color: white;
+    font-weight: 500;
+    font-size: 11px;
+    text-align: center;
+    padding: 5px 10px;
+    margin-top: -25px;
+}
+
+.price_tag {
+    background-color: #f44336;
+    border-radius: 80px;
+    color: white;
+    font-weight: 500;
+    font-size: 11px;
+    text-align: center;
+    padding: 5px 15px;
+    width: 90px;
+}
+
+.gm-sm {
+    display: none !important;
+}
+
+#note-detail-content span {
+    margin-top: 0px!important;
+}
+
+#restaurant #restaurant-content .product-slide-list .scroll {
+    padding: 0px;
+}
+
+.newline {
+    line-height: 2;
+}
+
+.fixed-outside {
+    position: absolute;
+    top: 54px;
+    color: white;
+    width: 100%;
+    height: 120px;
+    text-align: center;
+}
+
+
+/* Empty. Add your own CSS if you like */
+
+.item-radio .item-content {
+    padding: 0px!important;
+    background: none!important;
+}
+
+.button-bar .button {
+    min-height: 0!important;
+    line-height: 30px !important;
+}
+
+.button-bar > .item-radio.button {
+    padding: 0!important;
+}
+
+.item-radio input:checked ~ .item-content {
+    border-color: #145fd7!important;
+    background-color: #4a87ee!important;
+    color: white;
+}
+
+.item-radio .radio-icon {
+    display: none!important;
+}
+
+.button.button-small.button-stable.active, .button.button-small.button-stable.activated {
+    background-color: #03a9f4!important;
+    box-shadow: none;
+    color: #fff;
+}
+
+.card .item {
+    margin-bottom: 0!important;
+}
+
+.radio-btn {
+    border: #03a9f4 1px solid!important;
+    padding: 0px 10px!important;
+    min-width: 30%!important;
+}
+
+input[type="date"] {
+    background-color: transparent;
+    border: none;
+    width: 100%;
+}
+
+.pa-h-15 {
+    padding: 0px 15px;
+}

@@ -1,0 +1,123 @@
+.picker-body {
+  height: inherit; }
+  .picker-body .popup-head {
+    padding: 0;
+    border: 0; }
+  .picker-body .weekend {
+    color: #2b33ff; }
+  .picker-body .not-cur-month {
+    color: gray; }
+  .picker-body .today {
+    font-weight: bolder;
+    text-decoration: underline; }
+  .picker-body .popup-body {
+    overflow: inherit !important;
+    padding: 0; }
+
+.ionic-datepicker {
+  /*.today {
+    background-color: rgba(186, 186, 186, 1);
+  }*/ }
+  .ionic-datepicker .selected_date_full {
+    color: #387EF5;
+    font-weight: bold;
+    text-align: center;
+    padding-bottom: 5px; }
+  .ionic-datepicker .color_blue {
+    color: #387ef5; }
+  .ionic-datepicker .bg_color_blue {
+    background-color: #387ef5; }
+  .ionic-datepicker .date_col:hover {
+    /*  background-color: rgba(56, 126, 245, 0.5);*/
+    cursor: pointer; }
+  .ionic-datepicker .date_col:active {
+    background-color: #c0f5c6;
+    cursor: pointer; }
+  .ionic-datepicker .no_padding {
+    padding: 0; }
+  .ionic-datepicker .date_cell {
+    padding: 5px; }
+  .ionic-datepicker .date-selected {
+    background-color: #50f53a;
+    border-radius: 50%;
+    color: white !important; }
+  .ionic-datepicker .header {
+    background-color: #007aff;
+    min-height: 50px;
+    border-bottom: 1px solid #4c48ff; }
+  .ionic-datepicker .icon-chevron:before {
+    background-color: white;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    padding: 5px 3px;
+    position: absolute;
+    top: 10px; }
+  .ionic-datepicker .icon-chevron-left:before {
+    left: 10px; }
+  .ionic-datepicker .icon-chevron-right:before {
+    right: 10px; }
+  .ionic-datepicker .view-month {
+    color: white;
+    padding: 14px; }
+  .ionic-datepicker .pointer_events_none {
+    pointer-events: none !important;
+    color: #AAAAAA; }
+  .ionic-datepicker .select_section {
+    padding: 0; }
+  .ionic-datepicker .select_section label {
+    padding: 12px; }
+  .ionic-datepicker .select_section select {
+    font-size: 12px;
+    font-weight: bold;
+    padding: 2px 10px;
+    direction: ltr;
+    left: 0;
+    width: 100%;
+    max-width: 100%; }
+  .ionic-datepicker .select_section .item-select:after {
+    right: 4px;
+    border-top: 4px solid;
+    border-right: 4px solid transparent;
+    border-left: 4px solid transparent; }
+  .ionic-datepicker .left_arrow {
+    direction: rtl; }
+  .ionic-datepicker .font_22px {
+    font-size: 22px; }
+  .ionic-datepicker .btns {
+    float: right; }
+  .ionic-datepicker .clear {
+    clear: both; }
+
+.ionic_datepicker_modal_content {
+  padding-top: 10%; }
+  .ionic_datepicker_modal_content .ionic-datepicker .selected_date_full {
+    font-size: 20px;
+    padding: 20px; }
+  .ionic_datepicker_modal_content .cal-button {
+    padding: 0 !important;
+    font-size: 14px !important; }
+
+@media (min-width: 680px) {
+  .ionic_datepicker_modal_content {
+    padding-top: 0; }
+  .ionic_datepicker_modal_content .ionic-datepicker .selected_date_full {
+    font-size: inherit; }
+  .ionic_datepicker_modal_content .ionic-datepicker .selected_date_full {
+    padding: 10px 0 0 0; } }
+
+/*
+.ionic_datepicker_popup_btn_cancel {
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  padding-top: 3px;
+  padding-left: 8px;
+  font-size: 17px;
+  width: 30px;
+  height: 30px;
+  border: 2px solid rgba(235, 71, 60, 0.95);
+  color: white;
+  border-radius: 15px;
+  background-color: rgba(235, 71, 60, 0.95);
+}*/

@@ -1,0 +1,103 @@
+<ion-modal-view>
+    <ion-header-bar class="bar-balanced material-background-nav-bar">
+        <h1 class="title">
+            検索条件を指定してください
+        </h1>
+        <button class="button button-clear" ng-click="closeModal()">
+            <i class="fa fa-times fa-2x">
+            </i>
+        </button>
+    </ion-header-bar>
+    <ion-content class="has-header">
+        <div id="note-detail-content">
+            <md-content layout-gt-sm="row" layout-padding="" md-theme="docs-dark">
+                <md-subheader class="md-no-sticky">
+                    検索条件を指定してください
+                </md-subheader>
+                <div>
+                    <md-input-container class="md-block" flex-gt-sm="" style="margin: 0;">
+                        <div layout="row" layout-align="space-between center">
+                            <p for="vacancy_invisible" style="margin-bottom: 0px;">
+                                空室のみ表示
+                            </p>
+                            <md-switch class="md-secondary" name="vacancy_invisible" ng-model="search.vacancy_invisible">
+                            </md-switch>
+                        </div>
+                        <div layout="row" layout-align="space-between center">
+                            <p style="margin-bottom: 0px;">
+                                時間貸非表示
+                            </p>
+                            <md-switch class="md-secondary" ng-model="search.time_rental_invisible">
+                            </md-switch>
+                        </div>
+                        <div layout="row" layout-align="space-between center">
+                            <p style="margin-bottom: 0px;">
+                                月極非表示
+                            </p>
+                            <md-switch class="md-secondary" ng-model="search.monthly_invisible">
+                            </md-switch>
+                        </div>
+                        <div layout="row" layout-align="space-between center">
+                            <p style="margin-bottom: 0px;">
+                                コインパーク非表示
+                            </p>
+                            <md-switch class="md-secondary" ng-model="search.coinpark_invisible">
+                            </md-switch>
+                        </div>
+                        <div layout="row" layout-align="space-between center">
+                            <span style="margin-top: 0px;">
+                                車両タイプ
+                            </span>
+                            <p style="margin-bottom: 0px;">
+                                選択してください
+                            </p>
+                            <md-button class="md-icon-button" ng-click="show_vehicle_type_model()">
+                                <i class="fa fa-chevron-right ">
+                                </i>
+                            </md-button>
+                        </div>
+                    </md-input-container>
+                    <!--
+<div class="item item-divider" style="border-style: none;">詳細検索</div>
+      <md-input-container class="md-block" flex-gt-sm style="margin: 0;">
+       <label>キーワード</label>
+       <input ng-model="search.keyword" required>
+     </md-input-container>
+  <div layout="row" layout-align="space-between center">
+      <div flex="15" layout="" layout-align="left">
+        <span style="margin-top: 0px;">距離</span>
+      </div>
+      
+      <md-slider flex="" class="md-warn" md-discrete="" ng-model="search.range" step="1" min="1" max="10" aria-label="rating" ng-change="changeRange(search.range)" >
+      </md-slider>
+      <span style="margin-top: 0px;">{{search.range}}km</span>
+    </div>
+
+<div layout="row" layout-align="space-between center">
+   <span style="margin-top: 0px;">利用日</span>
+   <div class="padding-horizontal">
+     <ionic-multi-date-picker input-obj="datepickerObject">
+       <md-button  class="md-icon-button" >
+      <i class="fa fa-calendar fa-2x" aria-hidden="true"></i>
+      </md-button>
+     </ionic-multi-date-picker>
+   </div>
+ </div>
+    <md-chips style="
+    padding-bottom: 30px;
+    box-shadow: 0 0px;
+">
+      <md-chip class="chip-items" ng-repeat="date in selectedDates">{{date | date : "dd/MM"  }}</md-chip>
+    </md-chips>  
+
+</div>
+<md-input-container class="md-block" flex-gt-sm style="margin: 0;">
+<md-button class="md-raised md-warn" md-ripple-size="full" ng-click="goSerach(search)">検索</md-button>
+</md-input-container>
+-->
+                </div>
+            </md-content>
+        </div>
+    </ion-content>
+</ion-modal-view>
+<!--end content section-->

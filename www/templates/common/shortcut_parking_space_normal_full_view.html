@@ -1,0 +1,36 @@
+ <md-bottom-sheet class="md-list md-has-header" id="bottom-sheet_parking_gray" scroll="true" >
+
+    <div layout="row" ng-click="navigateTo('app.parking_details',marker)">
+    <md-list flex>
+    <section>
+    <md-subheader class="md-primary" style="font-size: 16px;font-weight: bold;color: #7b8080;">
+        {{marker.parking_space.name}}
+    </md-subheader>
+    <md-list layout-padding>
+    <md-list-item class="md-3-line" >
+    <img ng-src="{{marker.img}}" class="md-avatar"  style="border-radius: initial;margin-right: 5px;">
+    <div class="md-list-item-text">
+        <div class="row">        
+    <p><i class="fa fa-location-arrow parking_gray_color" aria-hidden="true"></i> ：{{marker.parking_space.distance | distance }}km</p>
+        </div>
+         <div class="row">
+                    <div class="col-66">
+                        <p><i class="fa fa-clock-o parking_gray_color" aria-hidden="true"></i> : {{marker.parking_space.utilization_start_time}}-{{marker.parking_space.utilization_end_time}}</p>
+                    </div>
+                    <div class="col-33">
+                        <span class="g-price_tag">¥{{marker.parking_space.max_price | number:0}}/日</span>
+                    </div>
+                </div>
+         <div class="row">        
+    <p><i class="fa fa-map parking_gray_color" aria-hidden="true"></i> ：{{marker.parking_space.prefecture}}{{marker.parking_space.city}}{{marker.parking_space.address}}</p>
+        </div>
+    </div>
+    </md-list-item>
+    </md-list>
+    </section>
+    </md-list>
+    </div>
+    <!--list section-->
+
+    <!--end list section-->
+</md-bottom-sheet>

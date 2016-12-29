@@ -1,0 +1,75 @@
+<ion-modal-view>
+    <ion-header-bar class="bar-balanced material-background-nav-bar">
+        <button class="button button-clear" ng-click="close_vehicle_type_model()">
+            <i class="ion-android-arrow-back">
+            </i>
+        </button>
+        <h1 class="title">
+            ご乗車の車種
+        </h1>
+    </ion-header-bar>
+    <ion-content>
+        <md-content flex="" layout-padding="">
+            <p>
+                以下サイズ一覧は、あくまでも参考として御確認下さい。 オプション装着車、年式によって、上記サイズをオーバーする可能性がございます。必ずご利用になる駐車場の駐車可能サイズを御確認下さい。
+            </p>
+            {{ selected }}
+        </md-content>
+        <md-divider>
+        </md-divider> 
+</div>        
+
+        <md-checkbox aria-label="true" class="md-warn md-align-top-right" flex="" ng-model="data.cb1" style="padding-left: 30px;" ng-checked="exists(2)" ng-click="toggle(2)" ng>
+            軽自動車
+            <br/> 
+            <span class="ipsum" style="margin: 0px;">
+                ワゴンＲ、ムーブ、ミラ、アルト、ウェイク、タントなど
+            </span>
+        </md-checkbox>
+        <md-divider md-inset="">
+        </md-divider>
+        <md-checkbox aria-label="Checkbox 2" class="md-warn md-align-top-left" flex="" ng-model="data.cb2" style="padding-left: 30px;" ng-checked="exists(3)" ng-click="toggle(3)">
+            小型車
+            <br/>
+            <span class="ipsum" style="margin: 0px;">
+                スイフト、デミオ、フィット、ヴィッツなど
+            </span>
+        </md-checkbox>
+        <md-divider md-inset="">
+        </md-divider>
+        <md-checkbox aria-label="Checkbox 2" class="md-warn md-align-top-left" flex="" ng-model="data.cb3"  style="padding-left: 30px;" ng-checked="exists(4)" ng-click="toggle(4)">
+            中型車
+            <br/>
+            <span class="ipsum" style="margin: 0px;">
+                クラウン、プリウス、マークＸ、スカイライン、ＢＭＷ3、ベンツなど
+            </span>
+        </md-checkbox>
+        <md-divider md-inset="">
+        </md-divider>
+        <md-checkbox aria-label="Checkbox 2" class="md-warn md-align-top-left" flex="" ng-model="data.cb4" style="padding-left: 30px;" ng-checked="exists(5)" ng-click="toggle(5)">
+            大型車
+            <br/>
+            <span class="ipsum" style="margin: 0px;">
+                レクサスＬＳ600h、ベンツＳクラス、レジェンド、セルシオ、フーガなど
+            </span>
+        </md-checkbox>
+        <md-divider md-inset="">
+        </md-divider>
+        <md-checkbox aria-label="Checkbox 2" class="md-warn md-align-top-left" flex="" ng-model="data.cb5" style="padding-left: 30px;" ng-checked="exists(6)" ng-click="toggle(6)">
+            ミドルルーフ
+            <br/>
+            <span class="ipsum" style="margin: 0px;">
+                ハリアー、ムラーノ、レクサスＲＸなど
+            </span>
+        </md-checkbox>
+        <md-divider md-inset="">
+        </md-divider>
+        <md-checkbox aria-label="Checkbox 2" class="md-warn md-align-top-left" flex="" ng-model="data.cb6"  style="padding-left: 30px;" ng-checked="exists(7)" ng-click="toggle(7)">
+            ハイルーフ
+            <br/>
+            <span class="ipsum" style="margin: 0px;">
+                アルファード、エルグランド、ランドクルーザープラド、ヴェルファイアなど
+            </span>
+        </md-checkbox>
+    </ion-content>
+</ion-modal-view>

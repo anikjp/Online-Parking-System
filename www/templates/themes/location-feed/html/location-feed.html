@@ -1,0 +1,38 @@
+<!--View Information-->
+<!--View name : Location Feed-->
+<!--State name : app.locationFeed-->
+<!--URL : #app/locationFeed-->
+
+<ion-view title="お気に入リス">
+    <!--location feed section-->
+    <ion-content id="location-feed-content">
+        <!--list section-->
+        <div class="location-list">
+             <div class="list" ng-repeat="n in [42, 42, 43, 43] track by $index" style="margin-bottom: 0px;">
+      <div class="location-item item-body" style="margin-bottom: 5px;padding: 5px;" ng-click="navigateTo('app.restaurant')">           
+    <a class="item item-thumbnail-left" href="#">
+      <img src="https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcTgx7vBBRf5Y1pSoSWuPLo4jKuV1KVRdHV2NwTG0Nb8exniAZf9">
+      <h2 style="margin: 0px;">麻布中央マンション駐車場01</h2>
+      <p style="margin: 0px;"><i class="fa fa-map-marker" aria-hidden="true"></i>：東京都港区麻布台1-4-7 麻布中央マンション</p>
+      <p style="margin: 0px;"><i class="fa fa-clock-o" aria-hidden="true"></i> 00:00:00～23:59:00</p>
+     </a>
+    <div class="location-content row">
+                    <div class="col-66">
+                        <h1>
+                            駐車可能車両
+                        </h1>
+
+                        <p>
+                         軽自動車/小型車/中型車/ミドルルーフ/ハイルーフ
+                        </p>
+                    </div>
+                    <div class="col-33">
+                        <span class="text-add">800円／日</span>
+                    </div>
+                </div>
+               </div> 
+</div>
+
+        </div><!--end list section-->
+    </ion-content><!--end location feed section-->
+</ion-view>

@@ -1,0 +1,224 @@
+<!--View Information-->
+<!--View name : Note List-->
+<!--Controller name : noteListCtrl-->
+<!--Controller path : www/templates/application-storage/local-application-db/js/controllers.js-->
+<!--State name : app.notelist-->
+<!--URL : #app/notelist-->
+
+<ion-view title="トメレタ">
+    <!--right button on navigation bar-->
+    <ion-nav-buttons side="right">
+        <md-button ng-disabled="isLoading" class="md-icon-button ion-nav-button-right" ng-click="filter()"
+                   aria-label="Setting">
+            <i class="ion-ios-color-filter-outline"></i>
+        </md-button>
+    </ion-nav-buttons><!--end right button on navigation bar-->
+
+    <!--note list section-->
+    <ion-content id="flash-light-content" scroll="false">
+
+        <map center="35.6895, 139.6917" zoom="15" heading="90" tilt="45" disable-default-u-i="true" draggable="true" on-dragend="dragEnd()">
+          <!--styles="[{stylers:[{hue:'#890000'},{visibility:'simplified'},{gamma:0.5},{weight:0.5}]},{elementType:'labels',stylers:[{visibility:'off'}]},{featureType:'water',stylers:[{color:'#2196F3'}]}]"-->
+    <marker position="current" animation="Animation.BOUNCE" centered="true"
+      icon="http://abnjp.com/resturent/wp-content/uploads/geoloc_pin.png" draggable="false" >
+      </marker>
+        <custom-marker ng-repeat="cm in customMarkers" position="{{cm.position}}"
+          on-click="click(cm)">
+          <div class="{{cm.class}}"><div> ¥{{cm.price}}</div></div>
+        </custom-marker>
+        </map>
+    </ion-content><!--end flash light section on-mouseover="mouseover()" on-mouseout="mouseout()"-->
+
+    <!--footer fab bar-->
+    <div class="footer-fab-bar">
+        <a class="md-button md-accent md-fab fab-footer" ng-click="navigateTo('app.notedetail')" aria-label="Add">
+            <i class="ion-navigate"></i>
+        </a>
+    </div><!--end footer fab bar-->
+
+    <!--loading progress-->
+    <div id="note-list-loading-progress" class="loading-progress fade-in">
+        <ion-spinner ng-if="!isAndroid" class="progress-circular"></ion-spinner>
+        <md-progress-circular ng-if="isAndroid" md-mode="indeterminate"></md-progress-circular>
+    </div><!--end loading progress-->
+
+    <!--angular template section-->
+    <script type="text/ng-template" id="item-short-details">
+      <md-bottom-sheet class="md-list md-has-header" id="bottom-sheet" scroll="false">
+        
+        <div layout="row">
+    <md-list flex>
+       <section>
+      <md-subheader class="md-primary"　style="font-weight: bold;">{{data.name}}</md-subheader>
+      <md-list layout-padding>
+        <md-list-item class="md-3-line" >
+            <img ng-src="img/map_posision.png" class="md-avatar" alt="{{message.who}}" style="border-radius: initial;">
+            <div class="md-list-item-text">
+              <h3>月極料金 :<span style="color: rgb(255,82,82);">¥{{data.price}}</span></h3>
+              <h4>期間 :7:00-23:00 利用可能</h4>
+              <p>
+                住所：東京都渋谷区恵比寿南2-22-7
+              </p>
+            </div>
+        </md-list-item>
+      </md-list>
+    </section>
+  </md-list>
+</div>
+          <!--list section-->
+
+          <!--end list section-->
+      </md-bottom-sheet>
+    </script>
+
+    <script id="filter-panel.html" type="text/ng-template">
+    <!--left button on navigation bar-->
+     <ion-modal-view>
+    <ion-header-bar class="bar-balanced material-background-nav-bar">
+          <h1 class="title">検索条件を指定してください</h1>
+          <button class="button button-clear" ng-click="closeModal()"><i class="fa fa-times fa-2x"></i></button>
+        </ion-header-bar>
+    <ion-content class="has-header" >
+
+            <div id="note-detail-content">
+                <md-content md-theme="docs-dark" layout-gt-sm="row" layout-padding>
+   <div>
+     <md-input-container class="md-block" flex-gt-sm style="margin: 0;padding-bottom: 2px;">
+       <label>キーワード</label>
+       <input ng-model="user.title">
+     </md-input-container>
+         <md-input-container class="md-block" flex-gt-sm style="margin: 0;">
+             <div layout="row" layout-align="space-between center">
+        <p style="margin-bottom: 0px;" for="setting.enabled">空室のみ表示</p>
+       <md-switch class="md-secondary" ng-model="search.blank"></md-switch>
+      </div>
+       <div layout="row" layout-align="space-between center">
+        <p style="margin-bottom: 0px;">時間貸非表示</p>
+       <md-switch class="md-secondary" ng-model="search.desable_time"></md-switch>
+      </div>
+       <div layout="row" layout-align="space-between center">
+        <p style="margin-bottom: 0px;">月極非表示</p>
+       <md-switch class="md-secondary" ng-model="search.desable_mothly" ></md-switch>
+      </div>
+           <div layout="row" layout-align="space-between center">
+        <span style="margin-top: 0px;">車両タイプ</span>
+         <p style="margin-bottom: 0px;">選択してください</p>
+   <md-button  class="md-icon-button" ng-click="show_vehicle_type_model()">
+            <i class="fa fa-chevron-right "></i>
+        </md-button>
+      </div>
+      <div layout="row" layout-align="space-between center">
+   <span style="margin-top: 0px;">価額帯</span>
+<md-select ng-model="weapon" placeholder="すべて" class="md-no-underline" style="padding-top: 0px;">
+          <md-option value="axe">すべて</md-option>
+          <md-option value="sword">Sword</md-option>
+          <md-option value="wand">Wand</md-option>
+          <md-option value="pen">Pen</md-option>
+        </md-select>
+
+ </div>
+<div layout="row" layout-align="space-between center">
+   <span style="margin-top: 0px;">利用日を選択</span>
+   <div class="padding-horizontal">
+     <ionic-multi-date-picker input-obj="datepickerObject">
+       <md-button  class="md-icon-button" >
+      <i class="fa fa-calendar fa-2x" aria-hidden="true"></i>
+      </md-button>
+     </ionic-multi-date-picker>
+   </div>
+ </div>
+    <md-chips >
+      <md-chip class="chip-items" ng-repeat="date in selectedDates">{{date | date : "dd/MM"  }}</md-chip>
+    </md-chips>  
+</md-input-container>
+</div>
+
+
+
+<button class="button button-block button-royal" ng-click="closeModal()">
+  検索
+</button>
+   </div>
+ </md-content>
+            </div><!--end content section-->
+        </ion-content>
+  </ion-modal-view>
+    </script>
+
+    <script id="vehicle-type.html" type="text/ng-template">
+  <ion-modal-view>
+    <ion-header-bar class="bar-balanced material-background-nav-bar">
+          <h1 class="title">ご乗車の車種</h1>
+          <button class="button button-clear" ng-click="close_vehicle_type_model()"> <i class="fa fa-times fa-2x"></i></button>
+        </ion-header-bar>
+    <ion-content>
+         <md-content flex layout-padding>
+    <p>以下サイズ一覧は、あくまでも参考として御確認下さい。 オプション装着車、年式によって、上記サイズをオーバーする可能性がございます。必ずご利用になる駐車場の駐車可能サイズを御確認下さい。</p>
+    </md-content> 
+    <md-divider></md-divider>
+
+
+ <md-radio-group ng-model="data.vehicles" class="md-primary">
+
+        <md-radio-button  ng-value="1" ng-disabled="false " ng-class="{'md-align-top-left': $index==1}">
+           軽自動車<br>
+          <span class="ipsum" >
+            ワゴンＲ、ムーブ、ミラ、アルト、ウェイク、タントなど
+          </span>
+
+        </md-radio-button>
+        <md-divider md-inset></md-divider>
+
+        <md-radio-button  ng-value="2" ng-disabled=" false " ng-class="{'md-align-top-left': $index==2}">
+           小型車 <br>
+          <span class="ipsum" >
+           スイフト、デミオ、フィット、ヴィッツなど
+          </span>
+
+        </md-radio-button>
+        <md-divider md-inset></md-divider>
+
+
+         <md-radio-button  ng-value="3" ng-disabled=" false " ng-class="{'md-align-top-left': $index==3}">
+           中型車 <br>
+          <span class="ipsum" >
+           クラウン、プリウス、マークＸ、スカイライン、ＢＭＷ3、ベンツなど
+          </span>
+
+        </md-radio-button>
+        <md-divider md-inset></md-divider>
+
+
+         <md-radio-button  ng-value="4" ng-disabled=" false " ng-class="{'md-align-top-left': $index==4}">
+           大型車 <br>
+          <span class="ipsum" >
+           レクサスＬＳ600h、ベンツＳクラス、レジェンド、セルシオ、フーガなど
+          </span>
+
+        </md-radio-button>
+        <md-divider md-inset></md-divider>
+
+
+        <md-radio-button  ng-value="5" ng-disabled=" false " ng-class="{'md-align-top-left': $index==5}">
+           ミドルルーフ <br>
+          <span class="ipsum" >
+           ハリアー、ムラーノ、レクサスＲＸなど
+          </span>
+
+        </md-radio-button>
+        <md-divider md-inset></md-divider>
+        
+        <md-radio-button  ng-value="6" ng-disabled=" false " ng-class="{'md-align-top-left': $index==6}">
+           ハイルーフ <br>
+          <span class="ipsum" >
+          アルファード、エルグランド、ランドクルーザープラド、ヴェルファイアなど
+          </span>
+
+        </md-radio-button>
+
+    </md-radio-group>
+
+    </ion-content>
+  </ion-modal-view>
+</script>
+</ion-view>

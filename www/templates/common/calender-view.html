@@ -1,0 +1,42 @@
+<ion-modal-view>
+    <ion-header-bar class="bar-balanced material-background-nav-bar">
+        <button class="button button-clear" ng-click="close_calender_view_model()">
+            <i class="ion-android-arrow-back">
+            </i>
+        </button>
+        <h1 class="title">
+            ご乗車の車種
+        </h1>
+    </ion-header-bar>
+    <ion-content>
+        <md-content flex="" layout-padding="">
+            <p>
+                以下サイズ一覧は、あくまでも参考として御確認下さい。 オプション装着車、年式によって、上記サイズをオーバーする可能性がございます。必ずご利用になる駐車場の駐車可能サイズを御確認下さい。
+            </p>
+            {{ selected }}
+        </md-content>
+        <md-divider>
+        </md-divider>
+        <md-subheader class="md-no-sticky">
+            Single Action Checkboxes
+        </md-subheader>
+        <md-list-item class="md-2-line" ng-repeat="c in calender" style="border-bottom: rgba(0, 0, 0, 0.12) 1px solid;">
+            <h1>
+                {{ c.day }}
+            </h1>
+            <p style="
+    text-align: center;margin-top: 6px;
+">
+                <span style="border-bottom: rgba(0,0,0,0.26) 1px solid;padding: 0px 40px;">
+                {{today | dateadding : $index | date:"dd/MM"}}
+                    
+                </span>
+                <br>
+                    ¥ {{ c.name }}-
+                </br>
+            </p>
+            <md-checkbox class="md-secondary" ng-model="topping.wanted">
+            </md-checkbox>
+        </md-list-item>
+    </ion-content>
+</ion-modal-view>

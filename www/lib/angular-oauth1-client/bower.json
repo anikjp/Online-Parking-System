@@ -1,0 +1,29 @@
+{
+  "name": "angular-oauth1-client",
+  "version": "0.1.11",
+  "authors": [
+    "me@seafish.io"
+  ],
+  "description": "An OAuth1.0a client for AngularJS and Cordova/Ionic",
+  "main": "./dist/angular-oauth1-client.js",
+  "keywords": [
+    "AngularJS",
+    "Angular",
+    "OAuth1",
+    "OAuth1.0a",
+    "Ionic"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "underscore": "~1.8.3",
+    "angular-local-storage": "~0.2.2",
+    "cryptojslib": "~3.1.2"
+  }
+}

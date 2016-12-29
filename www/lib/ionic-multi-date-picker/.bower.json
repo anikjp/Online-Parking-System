@@ -1,0 +1,48 @@
+{
+  "name": "ionic-multi-date-picker",
+  "version": "2.0.0",
+  "authors": [
+    "Denni Adam <dennila2@gmail.com>"
+  ],
+  "description": "A multiple date picker component for Ionic framework",
+  "main": [
+    "./dist/ionic-multi-date-picker.bundle.min.js"
+  ],
+  "keywords": [
+    "ionic-datepicker",
+    "ionic-multi-date-picker",
+    "multi-date",
+    "multi-datepicker",
+    "multi-date-picker",
+    "multidate",
+    "multidatepicker",
+    "multidate-picker",
+    "ionic",
+    "datepicker",
+    "datepicker for ionic",
+    "datepicker for ionic framework"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/dennila2",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests",
+    ".gitignore"
+  ],
+  "dependencies": {
+    "ionic": ">=1.0.0"
+  },
+  "_release": "2.0.0",
+  "_resolution": {
+    "type": "version",
+    "tag": "v2.0.0",
+    "commit": "dd4d01c7c526f95f77232f83fc38bdc1b8899635"
+  },
+  "_source": "https://github.com/DenniLa2/ionic-datepicker.git",
+  "_target": "^2.0.0",
+  "_originalSource": "ionic-multi-date-picker",
+  "_direct": true
+}

@@ -1,0 +1,117 @@
+<ion-view title="トメレタ">
+    <!--right button on navigation bar-->
+    <ion-nav-buttons side="right">
+        <md-button aria-label="Setting" class="md-icon-button ion-nav-button-right" ng-click="filter()" ng-disabled="isLoading">
+            <i class="ion-ios-color-filter-outline">
+            </i>
+        </md-button>
+    </ion-nav-buttons>
+    <!--end right button on navigation bar-->
+    <!--note list section-->
+    <ion-content id="flash-light-content" scroll="false">
+        <ng-map center="{{currentgeo.latitude}},{{currentgeo.longitude}}" disable-default-u-i="true" draggable="true" heading="90" on-dragend="dragEnd()" styles="[{'featureType': 'poi','stylers': [{ 'visibility': 'off' }]}]" tilt="45" zoom="13">
+            <!--styles="[{stylers:[{hue:'#890000'},{visibility:'simplified'},{gamma:0.5},{weight:0.5}]},{elementType:'labels',stylers:[{visibility:'off'}]},{featureType:'water',stylers:[{color:'#2196F3'}]}]"-->
+            <marker animation="Animation.BOUNCE" centered="true" draggable="false" icon="img/icons/geoloc_pin.png" position="{{currentgeo.latitude}},{{currentgeo.longitude}}">
+            </marker>
+            <custom-marker ng-if="search.vacancy_invisible!=true " ng-repeat="dmf in daily_monthly_full" on-click="quickview(dmf)" position="{{dmf.parking_space.latitude}},{{dmf.parking_space.longitude}}" >
+               <!-- <img ng-src="{{dmf.img}}"/>-->
+                <div class="my3"><div > ¥{{dmf.parking_space.max_price}}</div></div>
+            </custom-marker>
+            <custom-marker ng-repeat="dme in daily_monthly_empty" on-click="quickview(dme)" position="{{dme.parking_space.latitude}},{{dme.parking_space.longitude}}">
+                <img ng-src="{{ps.img}}"/>
+                <!--<div class="my1" ><div > ¥{{ps.parking_space.max_price}}</div></div>-->
+            </custom-marker>
+            <custom-marker ng-if="search.vacancy_invisible!=true" ng-repeat="df in daily_full" on-click="quickview(df)" position="{{df.parking_space.latitude}},{{df.parking_space.longitude}}">
+                <!--<img ng-src="{{df.img}}"/>-->
+                  <div class="my2"><div > ¥{{df.parking_space.max_price}}</div></div>
+            </custom-marker>
+            <custom-marker ng-repeat="de in daily_empty" on-click="quickview(de)" position="{{de.parking_space.latitude}},{{de.parking_space.longitude}}">
+               <!-- <img ng-src="{{de.img}}"/>-->
+               <div class="my1"><div > ¥{{de.parking_space.max_price}}</div></div>
+            </custom-marker>
+            <custom-marker ng-if="search.monthly_invisible!=true" ng-repeat="mo in monthly" on-click="quickview(mo)" position="{{mo.parking_space.latitude}},{{mo.parking_space.longitude}}">
+                <img ng-src="{{mo.img}}"/>
+                <!--<div class="my1" ><div > ¥{{ps.parking_space.max_price}}</div></div>-->
+            </custom-marker>
+            <custom-marker ng-repeat="trf in time_rental_full" on-click="quickview(trf)" position="{{trf.parking_space.latitude}},{{trf.parking_space.longitude}}">
+                <img ng-src="{{trf.img}}"/>
+                <!--<div class="my1" ><div > ¥{{ps.parking_space.max_price}}</div></div>-->
+            </custom-marker>
+            <custom-marker ng-repeat="tre in time_rental_empty" on-click="quickview(trf)" position="{{tre.parking_space.latitude}},{{tre.parking_space.longitude}}">
+                <img ng-src="{{tre.img}}"/>
+                <!--<div class="my1" ><div > ¥{{ps.parking_space.max_price}}</div></div>-->
+            </custom-marker>
+            <custom-marker ng-if="!search.coinpark_invisible" ng-repeat="cp in coinparks" on-click="quickview(cp)" position="{{cp.coinparking.latitude}},{{cp.coinparking.longitude}}">
+                <img ng-src="img/icons/coinpark.png"/>
+            </custom-marker>
+        </ng-map>
+    </ion-content>
+    <div class="fixed-outside">
+        <div class="card">
+            <div class="list">
+                <div class="item item-input-inset">
+                    <label class="item-input-wrapper">
+                        <i class="icon ion-search placeholder-icon">
+                        </i>
+                        <input placeholder="検索" style="width: 100%;" type="text" ng-model="search.keyword" required>
+                        </input>
+                    </label>
+                </div>
+                <section ng-hide="!searchpanel">
+                    <label class="item item-input" style="border: 0px;">
+                        <span class="input-label">
+                            車種
+                        </span>
+                        <ion-radio class="button button-small button-stable {{btn.active}} radio-btn " name="radio2" ng-change="btnactivated(btn)" ng-model="search.vehicle" ng-repeat="btn in search.vehicle_item" ng-value="btn.value">
+                            {{ btn.text }}
+                        </ion-radio>
+                    </label>
+                    <label class="item item-input" style="border: 0px;">
+                        <span class="input-label">
+                            利用日
+                        </span>
+                  <input type="date" min="2016-12-25" name="date" ng-model="search.searchdate" placeholder="{{ search.searchdate }}" >
+                        </input>
+                    </label>
+                    <div class="row">
+                        <div align="right" class="col ">
+                            <button class="button button-small button-stable pa-h-15" ng-click="searchpanel=false;">
+                                閉じる
+                            </button>
+                            <button class="button button-small button-stable pa-h-15" ng-click="clear()">
+                                クリア
+                            </button>
+                            <button class="button button-small button-stable pa-h-15" ng-click="goSerach(search)">
+                                検索
+                            </button>
+                        </div>
+                    </div>
+                </section>
+                <div class="item item-divider" ng-click="searchpanel=true;" ng-hide="searchpanel" style="border: 0px;">
+                    利用日・車種で絞り込む
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--end flash light section on-mouseover="mouseover()" on-mouseout="mouseout()"-->
+    <!--footer fab bar-->
+    <div class="footer-fab-bar" ng-hide="searchpanel">
+        <a aria-label="Add" class="md-button md-accent md-fab fab-footer" ng-click="refreshcenter()">
+            <i class="ion-navigate">
+            </i>
+        </a>
+    </div>
+    <!--end footer fab bar-->
+    <!--loading progress-->
+    <div class="loading-progress fade-in" id="note-list-loading-progress">
+        <ion-spinner class="progress-circular" ng-if="!isAndroid">
+        </ion-spinner>
+        <md-progress-circular md-mode="indeterminate" ng-if="isAndroid">
+        </md-progress-circular>
+    </div>
+    <!--end loading progress-->
+    <!--angular template section-->
+    <script id="item-short-details" type="text/ng-template">
+        <shortcut-view-directive data="seleted_position" ></shortcut-view-directive>
+    </script>
+</ion-view>

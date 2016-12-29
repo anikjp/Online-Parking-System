@@ -1,0 +1,134 @@
+<!--View Information-->
+<!--View name : Note Detail-->
+<!--Controller name : noteDetailCtrl-->
+<!--Controller path : www/templates/application-storage/local-application-db/js/controllers.js-->
+<!--State name : app.notedetail-->
+<!--URL : #app/notedetail-->
+
+<ion-view view-title="">
+    <!--left button on navigation bar-->
+    <ion-nav-buttons side="left">
+        <a ng-click="$ionicGoBack()" class="button back-button buttons  button-clear header-item nav-back-btn">
+            <i class="ion-android-arrow-back"></i>
+        </a>
+    </ion-nav-buttons><!--end left button on navigation bar-->
+
+    <!--note detail section-->
+        <ion-content class="has-header">
+
+            <div id="note-detail-content">
+                <md-content md-theme="docs-dark" layout-gt-sm="row" layout-padding>
+   <div>
+     <md-input-container >
+       <label>キーワード</label>
+       <input ng-model="user.title">
+     </md-input-container>
+     <md-switch ng-model="data.cb1" aria-label="Switch 1">
+    Switch 1: {{ data.cb1 }}
+  </md-switch>
+     <ul class="list">
+<li class="item item-toggle">
+空室のみ表示
+<label class="toggle toggle-assertive">
+ <input type="checkbox">
+ <div class="track">
+   <div class="handle"></div>
+ </div>
+</label>
+</li>
+<li class="item item-toggle">
+時間貸非表示
+<label class="toggle toggle-assertive">
+ <input type="checkbox"　value="on">
+ <div class="track">
+   <div class="handle"></div>
+ </div>
+</label>
+</li>
+<li class="item item-toggle">
+月極非表示
+<label class="toggle toggle-assertive">
+ <input type="checkbox">
+ <div class="track">
+   <div class="handle"></div>
+ </div>
+</label>
+</li>
+</ul>
+         <md-input-container class="md-block" flex-gt-sm>
+           <div layout="row" layout-align="space-between center">
+        <span>車両タイプ</span>
+        <md-select ng-model="weapon" placeholder="すべて" class="md-no-underline">
+          <md-option value="axe">すべて</md-option>
+          <md-option value="sword">Sword</md-option>
+          <md-option value="wand">Wand</md-option>
+          <md-option value="pen">Pen</md-option>
+        </md-select>
+      </div>
+      <div layout="row" layout-align="space-between center">
+   <span>価額帯</span>
+   <md-select ng-model="weapon" placeholder="すべて" class="md-no-underline">
+     <md-option value="axe">すべて</md-option>
+     <md-option value="sword">Sword</md-option>
+     <md-option value="wand">Wand</md-option>
+     <md-option value="pen">Pen?</md-option>
+   </md-select>
+ </div>
+ <div class="item item-button-right">
+    利用日
+    <button class="button button-positive" ng-click="openDatePicker()">
+      <i class="ion-android-calendar" ></i>
+    </button>
+  </div>
+
+</md-input-container>
+<div class="padding-horizontal">
+     <ionic-multi-date-picker input-obj="datepickerObject">
+       <button class="button button-block button-energized">
+         {{selectedDates.length}} date(s) / {{ datepickerObject.templateType }}
+       </button>
+     </ionic-multi-date-picker>
+   </div>
+</md-input-container>
+    <md-input-container class="md-block" flex-gt-sm>
+
+    </md-input-container>
+       </div>
+
+        <button class="button button-block button-positive" ng-click="GoBack()">
+  検索
+</button>
+   </div>
+ </md-content>
+            </div><!--end content section-->
+        </ion-content>
+
+
+    <!--angular template section-->
+    <script type="text/ng-template" id="contract-actions-template">
+        <md-bottom-sheet class="md-list md-has-header">
+            <h1 class="md-bottom-sheet-header">Note Actions</h1>
+            <!--list section-->
+            <md-list>
+               <md-list-item>
+                    <a class="md-default-theme md-bottom-sheet-list-item"
+                       ng-class="{ 'disabled-link': disableSaveBtn}"
+                       ng-click="saveNote(note,$event)">
+                        <i class="ion-android-list"></i>
+                        <span>Save Note</span>
+                    </a>
+                </md-list-item>
+
+                <md-list-item ng-show="actionDelete">
+                    <a class="md-default-theme md-bottom-sheet-list-item"
+                       ng-click="deleteNote(note,$event)">
+                        <i class="ion-android-delete"></i>
+                        <span>Remove Note</span>
+                    </a>
+                </md-list-item>
+            </md-list>
+            <!--end list section-->
+        </md-bottom-sheet>
+    </script><!--end angular template section-->
+
+</ion-view>

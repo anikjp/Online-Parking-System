@@ -1,0 +1,40 @@
+{
+  "name": "angular-oauth1-client",
+  "version": "0.1.12",
+  "authors": [
+    "me@seafish.io"
+  ],
+  "description": "An OAuth1.0a client for AngularJS and Cordova/Ionic",
+  "main": "./dist/angular-oauth1-client.js",
+  "keywords": [
+    "AngularJS",
+    "Angular",
+    "OAuth1",
+    "OAuth1.0a",
+    "Ionic"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "underscore": "~1.8.3",
+    "angular-local-storage": "~0.2.2",
+    "cryptojslib": "~3.1.2"
+  },
+  "homepage": "https://github.com/seanfisher/angular-oauth1-client",
+  "_release": "0.1.12",
+  "_resolution": {
+    "type": "version",
+    "tag": "v0.1.12",
+    "commit": "98d2e9926c2281db82c4d74d9cce8a75825ee2fe"
+  },
+  "_source": "https://github.com/seanfisher/angular-oauth1-client.git",
+  "_target": "^0.1.12",
+  "_originalSource": "angular-oauth1-client",
+  "_direct": true
+}
