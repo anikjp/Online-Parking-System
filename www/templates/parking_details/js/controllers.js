@@ -24,7 +24,7 @@ appControllers.controller('Parking_detailsCtrl', function($scope, $ionicModal, $
         $scope.today = new Date();
     }; //End initialForm.
     $scope.parking_details = function(parking_space_id) {
-        SerachService.get_parking_details(346).then(function(data) {
+        SerachService.get_parking_details(parking_space_id).then(function(data) {
             $scope.parking_data = data.results[0];
             $scope.parking_data.parking_custom_type = $scope.parking_type;
             $scope.ishistory = HistoryDBServices.get($scope.parking_data.parking_space_id);

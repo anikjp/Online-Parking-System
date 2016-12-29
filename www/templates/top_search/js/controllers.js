@@ -59,7 +59,7 @@ appControllers.controller('Top_searchCtrl', function($scope, $rootScope, $stateP
         $scope.data.cb5 = true;
         $scope.data.cb6 = true;
         //$scope.isOffline = $cordovaNetwork.isOffline();
-        $scope.isOffline = true;
+        $scope.isOffline = false;
         if ($scope.isOffline) $scope.networkStatus();
     }; //End initialForm.
     $scope.networkStatus = function() {
@@ -212,7 +212,8 @@ appControllers.controller('Top_searchCtrl', function($scope, $rootScope, $stateP
         }
         // after dragEnd method is called from map
     $scope.refreshcenter = function(event) {
-            if (!$cordovaNetwork.isOffline()) {
+            //if (!$cordovaNetwork.isOffline()) {
+            if (true) {
                 NgMap.getMap().then(function(map) {
                     map.setCenter({
                         lat: $scope.currentgeo.latitude,
@@ -243,6 +244,7 @@ appControllers.controller('Top_searchCtrl', function($scope, $rootScope, $stateP
     }; // End showing the bottom sheet.
     // recent_geoPosition
     SerachService.get_recent_geoPosition().then(function(data) {
+        console.log(data);
         $scope.currentgeo = data;
         $scope.currentgeo.latitude = data["latitude"];
         $scope.currentgeo.longitude = data["longitude"];

@@ -285,12 +285,12 @@ appServices.service('SerachService', function($rootScope, $http, $q, $filter, $c
         var response = [];
         var geo = $cordovaGeolocation.getCurrentPosition(geoSettings);
         geo.then(function(position) {
-            //console.log("Current position :",position);
+            console.log("Current position :",position);
             response["status"] = true;
             //response["latitude"] = 35.6585810;
             //response["longitude"] = 139.7454330;
              response["latitude"] = 35.6585810;
-                response["longitude"] = 139.7454330;
+             response["longitude"] = 139.7454330;
             deferred.resolve(response);
         }, function error(err) {
             $http({
