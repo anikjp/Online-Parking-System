@@ -1,4 +1,4 @@
-# Tomereta
+# Online Parking System
 It is an online parking service that allows you to search and reserve from the web and dedicated apps by specifying the place you want to park and the date and time.
 
 
