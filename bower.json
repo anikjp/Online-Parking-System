@@ -1,0 +1,11 @@
+{
+  "name": "tomereta",
+  "private": "true",
+  "devDependencies": {
+    "ionic": "driftyco/ionic-bower#1.3.1"
+  },
+  "dependencies": {
+    "ionic-datepicker": "^1.2.0",
+    "ionic-multi-date-picker": "^2.0.0"
+  }
+}
