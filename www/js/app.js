@@ -10,7 +10,7 @@ window.globalVariable = {
 }; // End Global variable
 var db = null; //Use for SQLite database.
 var tomedb = null; //Use for SQLite database.
-angular.module('starter', ['ionic', 'oauth1Client', 'ngMap', 'ionic-datepicker', 'ionic-multi-date-picker', 'ngIOS9UIWebViewPatch', 'starter.controllers', 'starter.services', 'starter.constant', 'ngMaterial', 'ngMessages', 'ngCordova']).run(function($ionicPlatform, $cordovaSQLite, $rootScope, $ionicHistory, $state, $mdDialog, $mdBottomSheet) {
+angular.module('starter', ['ionic','base64' ,'oauth1Client', 'ngMap', 'ionic-datepicker', 'ionic-multi-date-picker', 'ngIOS9UIWebViewPatch', 'starter.controllers', 'starter.services', 'starter.constant', 'ngMaterial', 'ngMessages', 'ngCordova']).run(function($ionicPlatform, $cordovaSQLite, $rootScope, $ionicHistory, $state, $mdDialog, $mdBottomSheet ) {
     function initialSQLite() {
         db = window.cordova ? $cordovaSQLite.openDB("contract.db") : window.openDatabase("contract.db", "1.0", "IonicMaterialDesignDB", -1);
         //Create database table of contracts by using sqlite database.
@@ -81,7 +81,12 @@ angular.module('starter', ['ionic', 'oauth1Client', 'ngMap', 'ionic-datepicker',
             $rootScope.customStyle = createCustomStyle($ionicHistory.currentStateName());
         });
     });
-}).config(function($ionicConfigProvider, ionicDatePickerProvider, $stateProvider, $urlRouterProvider, $mdThemingProvider, $mdIconProvider, $mdColorPalette, oauth1ClientProvider) {
+}).config(function($ionicConfigProvider, $httpProvider,$base64,ionicDatePickerProvider, $stateProvider, $urlRouterProvider, $mdThemingProvider, $mdIconProvider, $mdColorPalette, oauth1ClientProvider) {
+   
+$httpProvider.defaults.useXDomain = true;
+   var auth = $base64.encode("tomereta:$#t0mereta");
+        //$httpProvider.defaults.headers.common['Authorization'] = 'Basic ' + auth;
+        console.log(auth);
     var datePickerObj = {
         inputDate: new Date(),
         setLabel: 'Set',
@@ -204,62 +209,22 @@ angular.module('starter', ['ionic', 'oauth1Client', 'ngMap', 'ionic-datepicker',
                 controller: "Coinpark_detailsCtrl"
             }
         }
-    }).state('app.flashLight', {
-        url: "/dropboxLogin",
+    }).state('app.app_notification', {
+        url: "/notification",
         cache: false,
         views: {
             'menuContent': {
-                templateUrl: "templates/social-network-connect/dropbox/html/dropbox-feed.html",
-                //controller: 'Userctrl'
+                templateUrl: "templates/notification/html/push_notification.html",
+                controller: 'PushNotificationctrl'
             }
         }
-    }).state('app.dropboxLogin', {
-        url: "/dropboxLogin",
+    }).state('app.information', {
+        url: "/information",
         cache: false,
         views: {
             'menuContent': {
-                templateUrl: "templates/social-network-connect/dropbox/html/dropbox-login.html",
-                //controller: 'Userctrl'
-            }
-        }
-    }).state('app.singlePushNotification', {
-        url: "/singlePushNotification",
-        views: {
-            'menuContent': {
-                templateUrl: "templates/push-notification/single-push-notification/html/single-push-notification.html",
-                controller: "singlePushNotificationCtrl"
-            }
-        }
-    }).state('app.contacts', {
-        url: '/users/:id/details/{type}/{repeat:[0-9]+}?from&to',
-        data: {
-            customData1: 5,
-            color: "blue"
-        },
-        views: {
-            'menuContent': {
-                template: '<p style="background-color: white;top: 44px;">contactId : {{contactId}} </p>',
-                reloadOnSearch: true,
-                controller: function($state, $scope, contactId) {
-                    $scope.contactId = contactId;
-                    $scope.black = $state.current.data.color;
-                    console.log(contactId, $state.current.data);
-                },
-                resolve: {
-                    contactId: ['$stateParams', function($stateParams) {
-                        return $stateParams;
-                    }]
-                },
-                onEnter: function(contactId) {
-                    if (contactId) {
-                        console.log(contactId, "in on enter");
-                    }
-                },
-                onExit: function(contactId) {
-                    if (contactId) {
-                        console.log(contactId, "in on exit");
-                    }
-                }
+                templateUrl: "templates/information/html/information.html",
+                //controller: 'PushNotificationctrl'
             }
         }
     }); // End $stateProvider
@@ -270,4 +235,6 @@ angular.module('starter', ['ionic', 'oauth1Client', 'ngMap', 'ionic-datepicker',
         } else state.go('intro');
         return $location.path();
     });
-});
+}).constant('ApiEndpoint', {
+  url: 'http://cors.api.com/api'
+ });

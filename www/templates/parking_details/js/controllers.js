@@ -1,6 +1,6 @@
 // Controller of Notes List Page.
 // It will call NoteDB Services to present data to html view.
-appControllers.controller('Parking_detailsCtrl', function($scope, $ionicModal, $mdToast, ionicDatePicker, $rootScope, $mdBottomSheet, $stateParams, $timeout, NoteDB, $state, $mdDialog, SerachService, tomeretaConfig, FavlistDBServices, HistoryDBServices) {
+appControllers.controller('Parking_detailsCtrl', function($scope, $ionicModal,$ionicPopup, $mdToast, ionicDatePicker, $rootScope, $mdBottomSheet, $stateParams, $timeout, NoteDB, $state, $mdDialog, SerachService, tomeretaConfig, FavlistDBServices, HistoryDBServices) {
     // initialForm is the first activity in the controller.
     // It will initial all variable data and let the function works when page load.
     $scope.initialForm = function() {
@@ -13,16 +13,50 @@ appControllers.controller('Parking_detailsCtrl', function($scope, $ionicModal, $
         $scope.parking_space_id = $stateParams.parking_space_id;
         $scope.parking_type = $stateParams.parking_type;
         $scope.parking_slot = $stateParams.parking_slot;
-        console.log($stateParams);
+        //console.log($stateParams);
         $scope.parking_details($stateParams.parking_space_id);
         $scope.parking_data = [];
         $scope.imagelist = [];
         $scope.issave = FavlistDBServices.get($scope.parking_space_id);
         $scope.ishistory = false;
-        $scope.calender = tomeretaConfig.calender;
-        console.log($scope.calender);
+        $scope.calender = null;
+        $scope.selected_date = [];
         $scope.today = new Date();
+        $scope.selected = {
+            type: null,
+            date: null
+        };
     }; //End initialForm.
+
+    $scope.toggle = function(item, date) {
+        var idx = $scope.selected_date.indexOf(date);
+        if (idx > -1) {
+            $scope.selected_date.splice(idx, 1);
+        } else {
+            $scope.selected_date.push(date);
+        }
+        return true;
+    };
+ /*
+  $scope.exists = function (item, date) {
+     console.log($scope.selected_date);
+     console.log(($scope.selected_date.indexOf(date) > -1));
+     console.log(item,$scope.selected_date.indexOf(date));
+   // return $scope.selected_date.indexOf(item) > -1;
+    return true;
+  };
+
+  /*
+    $scope.toggle = function(item, date) {
+        var idx = $scope.selected_date.indexOf(date);
+        if (idx > -1) {
+            $scope.selected_date.splice(idx, 1);
+        } else {
+            $scope.selected_date.push(date);
+        }
+        return true;
+    };
+    */
     $scope.parking_details = function(parking_space_id) {
         SerachService.get_parking_details(parking_space_id).then(function(data) {
             $scope.parking_data = data.results[0];
@@ -97,7 +131,7 @@ appControllers.controller('Parking_detailsCtrl', function($scope, $ionicModal, $
         });
     }; // End navigateTo.
     //vehicle model
-    $ionicModal.fromTemplateUrl('templates/common/vehicle-type.html', {
+    $ionicModal.fromTemplateUrl('templates/common/select-vehicle-type.html', {
         scope: $scope,
         animation: 'slide-in-right'
     }).then(function(modal) {
@@ -109,6 +143,12 @@ appControllers.controller('Parking_detailsCtrl', function($scope, $ionicModal, $
     $scope.close_vehicle_type_model = function() {
         $scope.vehicle_type_model.hide();
     };
+    $scope.change_vehicle_type_model = function(type) {
+        if ($scope.selected.type != type) {
+           // $scope.selected_date = [];
+        }
+        $scope.vehicle_type_model.hide();
+    };
     //vehicle model
     $ionicModal.fromTemplateUrl('templates/common/calender-view.html', {
         scope: $scope,
@@ -117,16 +157,32 @@ appControllers.controller('Parking_detailsCtrl', function($scope, $ionicModal, $
         $scope.calender_view_model = modal;
     });
     $scope.show_calender_view_model = function() {
+        $scope.calender = $scope.parking_data.vehicle_space_details[$scope.selected.type]['reserved'];
         $scope.calender_view_model.show();
     }; // End navigateTo.
     $scope.close_calender_view_model = function() {
         $scope.calender_view_model.hide();
     };
     $scope.getdate = function(count) {
-        console.log(count);
         var todayDate = new Date();
         $scope.today = new Date().setDate(todayDate.getDate() + count);
-        console.log($scope.today);
     }; // End navigateTo.
     $scope.initialForm();
+
+    // A confirm dialog
+ $scope.showConfirm = function() {
+   var confirmPopup = $ionicPopup.confirm({
+     title: '予約最終確認',
+     template: '予約させてよろしいでしょうか?'
+   });
+
+   confirmPopup.then(function(res) {
+     if(res) {
+       console.log('You are sure');
+     } else {
+       console.log('You are not sure');
+     }
+   });
+ };
+
 }); // End of Notes List Page  Controller.

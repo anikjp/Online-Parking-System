@@ -1,111 +1,4 @@
-// LocalStorage service have ability to store data by HTML5 localStorage feature.
-// 
-// The data will store in a json format.
-// object schema of note data is: 
-// [{
-//     id: id of note,
-//     title: title of note,
-//     detail: note detail,
-//     createDate: note created date
-// }]
-appServices.factory('localStorage', function($filter, $window) {
-    return {
-        // Get data from localStorage it will use data key for getting the data.
-        // Parameter :  
-        // key = reference of object in localStorage.
-        get: function(key) {
-            return JSON.parse($window.localStorage[key] || "null");
-        },
-        // Add data to localStorage it will use data key 
-        // by input data key and value for setting data to localStorage.
-        // Parameter :  
-        // key = reference of object in localStorage.
-        // value = data that will store in localStorage.
-        set: function(key, value) {
-            $window.localStorage[key] = JSON.stringify(value);
-        },
-        //Remove all data from localStorage.
-        removeAll: function() {
-            $window.localStorage.clear();
-        }
-    };
-}); //End LocalStorage service.
-// NoteDB service will call localStorage Services to present notes data to controller.
-appServices.factory('NoteDB', function(localStorage) {
-    return {
-        //  Get all data from localStorage.
-        selectAll: function() {
-            //noteData is the key of object that store in localStorage.
-            return localStorage.get("noteData");
-        },
-        // Add new note data to localStorage.
-        // It will receive note data from controller to store in localStorage.
-        // Parameter :  
-        // note = data that will store in localStorage.
-        insert: function(note) {
-            var notesList = localStorage.get("noteData");
-            if (notesList == null) {
-                // For first value of data.
-                var newNoteData = [{
-                    id: 1,
-                    title: note.title,
-                    detail: note.detail,
-                    createDate: note.createDate
-                }];
-                localStorage.set("noteData", newNoteData);
-            } else {
-                // For up to second value of data.
-                var newNoteData = {
-                    id: (notesList.length + 1),
-                    title: note.title,
-                    detail: note.detail,
-                    createDate: note.createDate
-                };
-                notesList.push(newNoteData);
-                localStorage.set("noteData", notesList);
-            }
-        },
-        // Update note data to localStorage.
-        // It will receive note data from controller to store in localStorage.
-        // Parameter :  
-        // note = data that will update to localStorage.
-        update: function(note) {
-            var notesList = localStorage.get("noteData");
-            for (var i = 0; i <= notesList.length; i++) {
-                if (notesList[i].id == note.id) {
-                    notesList[i] = note;
-                    break;
-                }
-            }
-            localStorage.set("noteData", notesList);
-        },
-        // Remove data from localStorage it will receive note data
-        // from controller to remove data from localStorage.
-        // Parameter :  
-        // note = data that will delete from localStorage.
-        delete: function(note) {
-            var notesList = localStorage.get("noteData");
-            for (var i = 0; i <= notesList.length; i++) {
-                if (notesList[i].id == note.id) {
-                    notesList.splice(i, 1);
-                    break;
-                }
-            }
-            localStorage.set("noteData", notesList);
-        },
-        // Remove All data from localStorage.
-        clear: function() {
-            localStorage.removeAll();
-        },
-        // Get number of notes.
-        count: function() {
-            var notesList = localStorage.get("noteData");
-            return (notesList == null ? 0 : notesList.length);
-        }
-    };
-}); //End NoteDB service.
-// 
-appServices.service('SerachService', function($rootScope, $http, $q, $filter, $cordovaGeolocation, tomeretaConfig) {
+appServices.service('SerachService', function($rootScope, $http, $q, $filter, $cordovaGeolocation, tomeretaConfig, $base64) {
     //****************
     //Acquisition parking data from server
     //lat - latitude
@@ -114,16 +7,15 @@ appServices.service('SerachService', function($rootScope, $http, $q, $filter, $c
     //****************
     this.get_recent_parking_data = function(lat, lng, search) {
         range = search.range * 1000;
-        var serachtext = "lat=" + lat + "&lng=" + lng + "&radius=" + range;
+        var searchtext = "lat=" + lat + "&lng=" + lng + "&radius=" + range;
         if (search.keyword && search.keyword != "") {
-            serachtext = serachtext + "&address=" + search.keyword;
+            searchtext = searchtext + "&address=" + search.keyword;
         }
         if (search.searchdate) {
             var date = "";
             date = date + $filter('date')(search.searchdate, "yyyyMMdd");
-            serachtext = serachtext + "&use=" + date;
+            searchtext = searchtext + "&use=" + date;
         }
-
         var results = {
             coinparks: [],
             monthly: [],
@@ -137,7 +29,7 @@ appServices.service('SerachService', function($rootScope, $http, $q, $filter, $c
             time_rental_empty: []
         };
         var deferred = $q.defer();
-        $http.get("https://tomereta.jp/appif/getdata?" + serachtext).success(function(data) {
+        $http.get("http://www.onixoni.com/test.php?type=1&" + searchtext).success(function(data) {
             console.log(data);
             var track = 0;
             var sp_flag = 0;
@@ -225,7 +117,8 @@ appServices.service('SerachService', function($rootScope, $http, $q, $filter, $c
             } else {
                 deferred.resolve(results);
             }
-        }).error(function(data) {
+        }).error(function(data, status, headers, config) {
+            console.log(headers, config);
             deferred.reject(data);
         });
         return deferred.promise;
@@ -262,7 +155,7 @@ appServices.service('SerachService', function($rootScope, $http, $q, $filter, $c
         //****************
     this.get_parking_details = function(parking_id) {
         var deferred = $q.defer();
-        $http.get("https://tomereta.jp/getParkingDetail?parkingId=" + parking_id).success(function(data) {
+        $http.get("http://www.onixoni.com/test.php?type=2&parkingId=" + parking_id).success(function(data) {
             deferred.resolve(data);
         }).error(function(data) {
             deferred.reject(data);
@@ -285,21 +178,29 @@ appServices.service('SerachService', function($rootScope, $http, $q, $filter, $c
         var response = [];
         var geo = $cordovaGeolocation.getCurrentPosition(geoSettings);
         geo.then(function(position) {
-            console.log("Current position :",position);
+            console.log("Current position :", position);
             response["status"] = true;
-            //response["latitude"] = 35.6585810;
-            //response["longitude"] = 139.7454330;
-             response["latitude"] = 35.6585810;
-             response["longitude"] = 139.7454330;
+            response["latitude"] = position.coords.latitude;
+            response["longitude"] = position.coords.longitude
             deferred.resolve(response);
         }, function error(err) {
+            response["status"] = false;
+            response["error"] = err;
+            //tokyo tower
+            response["latitude"] = 35.6585810;
+            response["longitude"] = 139.7454330;
+            deferred.resolve(response);
+            /*
             $http({
                 method: "GET",
-                url: "http://ip-api.com/json"
+                url: "http://ipinfo.io/"
             }).then(function mySucces(response) {
+                console.log("response position :", response.data.loc);
+                var loc = response.data.loc;
+                loc = loc.split(",");
                 response["status"] = true;
-                response["latitude"] = response.data.lat;
-                response["longitude"] = response.data.lon;
+                response["latitude"] = loc[0];
+                response["longitude"] = loc[1];
                 deferred.resolve(response);
             }, function myError(response) {
                 response["status"] = false;
@@ -310,6 +211,30 @@ appServices.service('SerachService', function($rootScope, $http, $q, $filter, $c
                 deferred.resolve(response);
             });
             //console.log("Current position failed:",err);
+            */
+        });
+        return deferred.promise;
+    };
+    //****************
+    //Acquisition parking data from server
+    //lat - latitude
+    //lng - longitude
+    //search - Serach Keyword
+    //****************
+    this.get_addtoGEO = function(address) {
+        var deferred = $q.defer();
+        var response = [];
+        $http({
+            method: "GET",
+            url: "https://maps.googleapis.com/maps/api/geocode/json?address=" + address + ",JP&sensor=false&key=AIzaSyA4m14npzfDvUgs0T7gisRvyFR3GsLyd_c"
+        }).then(function mySucces(response) {
+            console.log(response);
+            response["status"] = true;
+            deferred.resolve(response.data);
+        }, function myError(response) {
+            console.log(response);
+            response["status"] = false;
+            deferred.resolve(response);
         });
         return deferred.promise;
     };

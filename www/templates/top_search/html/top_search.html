@@ -9,26 +9,45 @@
     <!--end right button on navigation bar-->
     <!--note list section-->
     <ion-content id="flash-light-content" scroll="false">
-        <ng-map center="{{currentgeo.latitude}},{{currentgeo.longitude}}" disable-default-u-i="true" draggable="true" heading="90" on-dragend="dragEnd()" styles="[{'featureType': 'poi','stylers': [{ 'visibility': 'off' }]}]" tilt="45" zoom="13">
+        <ng-map center="{{recentmap.lat}},{{recentmap.lng}}" disable-default-u-i="true" draggable="true" heading="90" on-dragend="dragEnd()" styles="[{'featureType': 'poi','stylers': [{ 'visibility': 'off' }]}]" tilt="45" zoom="14">
             <!--styles="[{stylers:[{hue:'#890000'},{visibility:'simplified'},{gamma:0.5},{weight:0.5}]},{elementType:'labels',stylers:[{visibility:'off'}]},{featureType:'water',stylers:[{color:'#2196F3'}]}]"-->
             <marker animation="Animation.BOUNCE" centered="true" draggable="false" icon="img/icons/geoloc_pin.png" position="{{currentgeo.latitude}},{{currentgeo.longitude}}">
             </marker>
-            <custom-marker ng-if="search.vacancy_invisible!=true " ng-repeat="dmf in daily_monthly_full" on-click="quickview(dmf)" position="{{dmf.parking_space.latitude}},{{dmf.parking_space.longitude}}" >
-               <!-- <img ng-src="{{dmf.img}}"/>-->
-                <div class="my3"><div > ¥{{dmf.parking_space.max_price}}</div></div>
+            <!--ng-if="search.vacancy_invisible!=true "-->
+            <custom-marker ng-repeat="dmf in daily_monthly_full" on-click="quickview(dmf)" position="{{dmf.parking_space.latitude}},{{dmf.parking_space.longitude}}">
+                <!-- <img ng-src="{{dmf.img}}"/>-->
+                <div class="my3">
+                    <div>
+                        ¥{{dmf.parking_space.max_price}}
+                    </div>
+                </div>
             </custom-marker>
             <custom-marker ng-repeat="dme in daily_monthly_empty" on-click="quickview(dme)" position="{{dme.parking_space.latitude}},{{dme.parking_space.longitude}}">
-                <img ng-src="{{ps.img}}"/>
-                <!--<div class="my1" ><div > ¥{{ps.parking_space.max_price}}</div></div>-->
+                <!--<img ng-src="{{dme.img}}"/>-->
+                <div class="my1">
+                    <div>
+                        ¥{{dme.parking_space.max_price}}
+                    </div>
+                </div>
             </custom-marker>
-            <custom-marker ng-if="search.vacancy_invisible!=true" ng-repeat="df in daily_full" on-click="quickview(df)" position="{{df.parking_space.latitude}},{{df.parking_space.longitude}}">
+            <!--ng-if="search.vacancy_invisible!=true"-->
+            <custom-marker ng-repeat="df in daily_full" on-click="quickview(df)" position="{{df.parking_space.latitude}},{{df.parking_space.longitude}}">
                 <!--<img ng-src="{{df.img}}"/>-->
-                  <div class="my2"><div > ¥{{df.parking_space.max_price}}</div></div>
+                <div class="my2">
+                    <div>
+                        ¥{{df.parking_space.max_price}}
+                    </div>
+                </div>
             </custom-marker>
             <custom-marker ng-repeat="de in daily_empty" on-click="quickview(de)" position="{{de.parking_space.latitude}},{{de.parking_space.longitude}}">
-               <!-- <img ng-src="{{de.img}}"/>-->
-               <div class="my1"><div > ¥{{de.parking_space.max_price}}</div></div>
+                <!-- <img ng-src="{{de.img}}"/>-->
+                <div class="my1">
+                    <div>
+                        ¥{{de.parking_space.max_price}}
+                    </div>
+                </div>
             </custom-marker>
+            <!--ng-if="search.monthly_invisible!=true"-->
             <custom-marker ng-if="search.monthly_invisible!=true" ng-repeat="mo in monthly" on-click="quickview(mo)" position="{{mo.parking_space.latitude}},{{mo.parking_space.longitude}}">
                 <img ng-src="{{mo.img}}"/>
                 <!--<div class="my1" ><div > ¥{{ps.parking_space.max_price}}</div></div>-->
@@ -53,7 +72,7 @@
                     <label class="item-input-wrapper">
                         <i class="icon ion-search placeholder-icon">
                         </i>
-                        <input placeholder="検索" style="width: 100%;" type="text" ng-model="search.keyword" required>
+                        <input ng-model="search.keyword" placeholder="検索" required="" style="width: 100%;" type="text">
                         </input>
                     </label>
                 </div>
@@ -70,7 +89,7 @@
                         <span class="input-label">
                             利用日
                         </span>
-                  <input type="date" min="2016-12-25" name="date" ng-model="search.searchdate" placeholder="{{ search.searchdate }}" >
+                        <input min="2016-12-25" name="date" ng-model="search.searchdate" placeholder="{{ search.searchdate }}" type="date">
                         </input>
                     </label>
                     <div class="row">

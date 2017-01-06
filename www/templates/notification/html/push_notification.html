@@ -1,0 +1,97 @@
+<!--View Information-->
+<!--View name : Dropbox Feed -->
+<!--Controller name : dropboxFeedCtrl-->
+<!--Controller path : www/templates/social-network-connect/dropbox/js/controllers.js-->
+<!--State name : app.dropboxFeed-->
+<!--URL : #app/dropboxFeed-->
+<ion-view view-title="プッシュ通知">
+    <!--left button on navigation bar-->
+    <ion-content>
+        <ion-refresher on-refresh="doRefresh()" pulling-text="Pull to refresh...">
+        </ion-refresher>
+        <!--list section-->
+        <div id="menu-dashboard-content">
+            <div class="menu-dashboard-footer">
+                <md-whiteframe class="md-whiteframe-z1" layout="" ng-click="showToast('Wordpress Blog')">
+                    <div class="row">
+                        <div class="col-10">
+                            <i class="fa fa-wordpress">
+                            </i>
+                        </div>
+                        <div class="col-80">
+                            最大予約期間
+                        </div>
+                        <div class="col-10">
+                            <span>14日</span>
+                        </div>
+                    </div>
+                </md-whiteframe>
+                <md-whiteframe class="md-whiteframe-z1" layout="" ng-click="showToast('Google Connect')">
+                    <div class="row">
+                        <div class="col-10">
+                            <i class="fa fa-google-plus">
+                            </i>
+                        </div>
+                        <div class="col-33">
+                            貸出時間
+                        </div>
+                        <div class="col-50 right">
+                            <span>00:00:00　-　23:59:00</span>
+                        </div>
+                    </div>
+                </md-whiteframe>
+            </div>
+            <!--end panel footer section-->
+        </div>
+        <md-whiteframe class="md-whiteframe-1dp" flex-gt-md="25" flex-gt-sm="35" flex-sm="45" layout="" layout-align="left right">
+            <div class="card">
+                <div class="item item-text-wrap">
+                    <p>
+                        最大予約期間：14日
+                    </p>
+                    >
+                    トメレタでお出かけ前に駐車場を予約。 目的地の住所・名前で検索すれば、周辺の空き駐車場が表示されます。トメレタでお出かけ前に駐車場を予約。 目的地の住所・名前で検索すれば、周辺の空き駐車場が表示されます。
+                </div>
+            </div>
+        </md-whiteframe>
+        <md-whiteframe class="md-whiteframe-z1" layout="" ng-click="showToast('Google Connect')">
+            <div class="row">
+                <div class="col-10">
+                    <i class="fa fa-google-plus">
+                    </i>
+                </div>
+                <div class="col-80">
+                    Google Connect
+                </div>
+                <div class="col-10">
+                    <i class="fa fa-angle-right">
+                    </i>
+                </div>
+            </div>
+        </md-whiteframe>
+        <md-list ng-cloak="">
+            <md-subheader class="md-no-sticky">
+                プッシュ通知一覧
+            </md-subheader>
+            <div class="card">
+                <div class="item item-divider">
+                    ドライバー
+                </div>
+                <div class="item item-text-wrap">
+                    トメレタでお出かけ前に駐車場を予約。 目的地の住所・名前で検索すれば、周辺の空き駐車場が表示されます。トメレタでお出かけ前に駐車場を予約。 目的地の住所・名前で検索すれば、周辺の空き駐車場が表示されます。
+                </div>
+            </div>
+            <div class="card">
+                <div class="item item-divider">
+                    ドライバー
+                </div>
+                <div class="item item-text-wrap">
+                    トメレタでお出かけ前に駐車場を予約。 目的地の住所・名前で検索すれば、周辺の空き駐車場が表示されます。トメレタでお出かけ前に駐車場を予約。 目的地の住所・名前で検索すれば、周辺の空き駐車場が表示されます。
+                </div>
+            </div>
+        </md-list>
+        <!--end list section-->
+        <ion-infinite-scroll distance="1%" ng-if="shouldLoadData" on-infinite="getFeedData(true)">
+        </ion-infinite-scroll>
+    </ion-content>
+</ion-view>

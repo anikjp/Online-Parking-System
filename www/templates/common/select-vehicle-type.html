@@ -1,0 +1,76 @@
+<ion-modal-view>
+    <ion-header-bar class="bar-balanced material-background-nav-bar">
+        <button class="button button-clear" ng-click="close_vehicle_type_model()">
+            <i class="ion-android-arrow-back">
+            </i>
+        </button>
+        <h1 class="title">
+            ご乗車の車種
+        </h1>
+    </ion-header-bar>
+    <ion-content>
+        <md-content flex="" layout-padding="">
+            <p>
+                以下サイズ一覧は、あくまでも参考として御確認下さい。 オプション装着車、年式によって、上記サイズをオーバーする可能性がございます。必ずご利用になる駐車場の駐車可能サイズを御確認下さい。
+            </p>
+        </md-content>
+        <md-divider>
+        </md-divider>
+        <md-radio-group class="md-primary" ng-model="selected.type">
+            <div ng-repeat="pv in parking_data.vehicle_space_details">
+                <md-radio-button ng-click="change_vehicle_type_model($index)" ng-value="$index">
+                    <p ng-bind-html="pv.vehiclePos" style="color: #11c1f3;font-size: 15px;font-weight: bold;">
+                    </p>
+                    <span class="ipsum">
+                        <span ng-if="pv.vehicle_height==0" style="padding-right:20px;">
+                            車高制限： なし
+                        </span>
+                        <span ng-if="pv.vehicle_height!=0">
+                            車高制限： {{pv.vehicle_height}}mm
+                        </span>
+                        <span ng-if="pv.vehicle_weight==0">
+                            重量制限：なし
+                        </span>
+                        <span ng-if="pv.vehicle_weight!=0">
+                            重量制限： {{pv.vehicle_weight}}mm
+                        </span>
+                        <br/>
+                        <span ng-if="pv.vehicle_width==0" style="padding-right:20px;">
+                            車幅制限： なし
+                        </span>
+                        <span ng-if="pv.vehicle_width!=0">
+                            車下制限： {{pv.vehicle_width}}mm
+                        </span>
+                        <span ng-if="pv.vehicle_low==0">
+                            車下制限： なし
+                        </span>
+                        <span ng-if="pv.vehicle_low!=0">
+                            車下制限： {{pv.vehicle_low}}mm
+                        </span>
+                        <br/>
+                        <span ng-if="pv.vehicle_length==0" style="padding-right:20px;">
+                            全長制限： なし
+                        </span>
+                        <span ng-if="pv.vehicle_length!=0">
+                            全長制限： {{pv.vehicle_length}}mm
+                        </span>
+                        <span ng-if="pv.vehicle_tire==0">
+                            タイヤ幅制限： なし
+                        </span>
+                        <span ng-if="pv.vehicle_tire!=0">
+                            タイヤ幅制限： {{pv.vehicle_low}}mm
+                        </span>
+                        <br/>
+                        <span ng-show="pv.description">
+                            ** {{pv.description}}
+                        </span>
+                    </span>
+                    <br/>
+                    駐車可能台数: {{pv.space_count}}
+                </md-radio-button>
+                <md-divider md-inset="">
+                </md-divider>
+            </div>
+        </md-radio-group>
+    </ion-content>
+</ion-modal-view>
