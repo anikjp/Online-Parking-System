@@ -33,33 +33,33 @@ appControllers.directive("shortcutViewDirective", function() {
         scope: {
             marker: '= data'
         },
-        controller: function($scope, $state, $mdBottomSheet, tomeretaConfig, $cordovaNetwork) {
+        controller: function($scope, $state, $mdBottomSheet, OnlineParkingSystemConfig, $cordovaNetwork) {
             //function used on the ng-include to resolve the template
             console.log($scope.marker);
             $scope.getTemplateUrl = function() {
                 //basic handling
-                if ($scope.marker.parking_type == tomeretaConfig.parking_types.monthly) {
+                if ($scope.marker.parking_type == OnlineParkingSystemConfig.parking_types.monthly) {
                     return 'templates/common/shortcut_parking_space_monthly_view.html';
-                } else if ($scope.marker.parking_type == tomeretaConfig.parking_types.daily_monthly) {
-                    if ($scope.marker.parking_slot == tomeretaConfig.parking_slot.full) {
+                } else if ($scope.marker.parking_type == OnlineParkingSystemConfig.parking_types.daily_monthly) {
+                    if ($scope.marker.parking_slot == OnlineParkingSystemConfig.parking_slot.full) {
                         return 'templates/common/shortcut_parking_space_normal_full_view.html';
                     } else {
                         return 'templates/common/shortcut_parking_space_normal_empty_view.html';
                     }
-                } else if ($scope.marker.parking_type == tomeretaConfig.parking_types.daily) {
-                    if ($scope.marker.parking_slot == tomeretaConfig.parking_slot.full) {
+                } else if ($scope.marker.parking_type == OnlineParkingSystemConfig.parking_types.daily) {
+                    if ($scope.marker.parking_slot == OnlineParkingSystemConfig.parking_slot.full) {
                         return 'templates/common/shortcut_parking_space_normal_full_view.html';
                     } else {
                         return 'templates/common/shortcut_parking_space_normal_empty_view.html';
                     }
-                } else if ($scope.marker.parking_type == tomeretaConfig.parking_types.time_rental) {
-                    if ($scope.marker.parking_slot == tomeretaConfig.parking_slot.full) {
+                } else if ($scope.marker.parking_type == OnlineParkingSystemConfig.parking_types.time_rental) {
+                    if ($scope.marker.parking_slot == OnlineParkingSystemConfig.parking_slot.full) {
                         return 'templates/common/shortcut_parking_space_normal_full_view.html';
                     } else {
                         return 'templates/common/shortcut_parking_space_normal_empty_view.html';
                     }
-                } else if ($scope.marker.parking_type == tomeretaConfig.parking_types.airport) {
-                    if ($scope.marker.parking_slot == tomeretaConfig.parking_slot.full) {
+                } else if ($scope.marker.parking_type == OnlineParkingSystemConfig.parking_types.airport) {
+                    if ($scope.marker.parking_slot == OnlineParkingSystemConfig.parking_slot.full) {
                         return 'templates/common/shortcut_parking_space_normal_full_view.html';
                     } else {
                         return 'templates/common/shortcut_parking_space_normal_empty_view.html';

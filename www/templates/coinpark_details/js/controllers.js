@@ -19,7 +19,7 @@ appControllers.controller('Coinpark_detailsCtrl', function (
         //For enable/disable row animation.
         $scope.isAnimated =  $stateParams.isAnimated;
         $scope.targetdata =  $stateParams.targetdata.coinparking;
-        $scope.targetdata.map_image_url="http://maps.googleapis.com/maps/api/staticmap?center="+$scope.targetdata.latitude+","+$scope.targetdata.longitude+"&zoom=15&size=600x250&language=ja&markers=icon:https://tomereta.jp/icon/coinpark_icon.png%7C"+$scope.targetdata.latitude+","+$scope.targetdata.longitude+"&format=png&visual_refresh=true"
+        $scope.targetdata.map_image_url="http://maps.googleapis.com/maps/api/staticmap?center="+$scope.targetdata.latitude+","+$scope.targetdata.longitude+"&zoom=15&size=600x250&language=ja&markers=icon:https://OnlineParkingSystem.jp/icon/coinpark_icon.png%7C"+$scope.targetdata.latitude+","+$scope.targetdata.longitude+"&format=png&visual_refresh=true"
         if(ionic.Platform.isIOS()){
         $scope.targetdata.map_url='maps://?q=' + $scope.targetdata.latitude+","+$scope.targetdata.longitude;
         $scope.targetdata.map_url_target="_system";

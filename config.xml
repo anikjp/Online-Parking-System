@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<widget id="com.ionicframework.ionicmaterialdesign392344" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
-  <name>Tomereta</name>
+<widget id="com.ionicframework.OnlineParkingSystem" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+  <name>OnlineParkingSystem</name>
   <description>
     An Ionic Framework and Cordova project.
   </description>
-  <author email="ionicmaterialdesign@gmail.com" href="http://ionicframework.com/">
+  <author email="OnlineParkingSystem@gmail.com" href="http://ionicframework.com/">
     Ionic Up Team
   </author>
   <content src="index.html"/>

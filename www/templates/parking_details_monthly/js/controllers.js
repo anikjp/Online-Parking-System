@@ -1,6 +1,6 @@
 // Controller of Notes List Page.
 // It will call NoteDB Services to present data to html view.
-appControllers.controller('Parking_details_monthlyCtrl', function($scope, $ionicModal, $mdToast, ionicDatePicker, $rootScope, $mdBottomSheet, $stateParams, $timeout, NoteDB, $state, $mdDialog, SerachService, tomeretaConfig, FavlistDBServices, HistoryDBServices) {
+appControllers.controller('Parking_details_monthlyCtrl', function($scope, $ionicModal, $mdToast, ionicDatePicker, $rootScope, $mdBottomSheet, $stateParams, $timeout, NoteDB, $state, $mdDialog, SerachService, OnlineParkingSystemConfig, FavlistDBServices, HistoryDBServices) {
     // initialForm is the first activity in the controller.
     // It will initial all variable data and let the function works when page load.
     $scope.initialForm = function() {
@@ -41,16 +41,16 @@ appControllers.controller('Parking_details_monthlyCtrl', function($scope, $ionic
                     name: '車室図'
                 });
             }
-            var img = "https://tomereta.jp/icon/monthly_icon.png";
+            var img = "https://OnlineParkingSystem.jp/icon/monthly_icon.png";
             /*
-            if ($scope.parking_type == tomeretaConfig.parking_types.daily) {
-                img = "https://tomereta.jp/icon/monthly_icon.png";
+            if ($scope.parking_type == OnlineParkingSystemConfig.parking_types.daily) {
+                img = "https://OnlineParkingSystem.jp/icon/monthly_icon.png";
             } else if ($scope.parking_data.monthly_vehicle_type != 1 && $scope.parking_data.parking_special_type == 2) {
-                img = "https://tomereta.jp/icon/dsp_icon.png";
+                img = "https://OnlineParkingSystem.jp/icon/dsp_icon.png";
             } else if ($scope.parking_data.monthly_vehicle_type == "---") {
-                img = "https://tomereta.jp/icon/dsp_icon.png";
+                img = "https://OnlineParkingSystem.jp/icon/dsp_icon.png";
             } else if ($scope.parking_data.monthly_vehicle_type == "--") {
-                img = "https://tomereta.jp/icon/dsp_gray_icon.png";
+                img = "https://OnlineParkingSystem.jp/icon/dsp_gray_icon.png";
             }
             */
             $scope.parking_data.map_image_url = "http://maps.googleapis.com/maps/api/staticmap?center=" + $scope.parking_data.lat + "," + $scope.parking_data.lng + "&zoom=15&size=600x250&language=ja&markers=icon:" + img + "%7C" + $scope.parking_data.lat + "," + $scope.parking_data.lng + "&format=png&visual_refresh=true"

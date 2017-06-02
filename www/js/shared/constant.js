@@ -1,4 +1,4 @@
-appConstant.constant('tomeretaConfig', {
+appConstant.constant('OnlineParkingSystemConfig', {
     parking_types: {
         monthly: 1,
         daily: 2,

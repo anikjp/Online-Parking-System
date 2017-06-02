@@ -1,5 +1,5 @@
 {
-  "name": "Tomereta",
+  "name": "OnlineParkingSystem",
   "app_id": "6735a596",
   "gulpStartupTasks": [
     "sass",

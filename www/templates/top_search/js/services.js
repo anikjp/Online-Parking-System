@@ -1,4 +1,4 @@
-appServices.service('SerachService', function($rootScope, $http, $q, $filter, $cordovaGeolocation, tomeretaConfig, $base64) {
+appServices.service('SerachService', function($rootScope, $http, $q, $filter, $cordovaGeolocation, OnlineParkingSystemConfig, $base64) {
     //****************
     //Acquisition parking data from server
     //lat - latitude
@@ -44,65 +44,65 @@ appServices.service('SerachService', function($rootScope, $http, $q, $filter, $c
                         } else {
                             data.result.parking_spaces[index].vehicles_possible_type = data.result.parking_spaces[index].vehicles_type[0]['possible_type'];
                         }
-                        if (data.result.parking_spaces[index].parking_space.monthly == true && data.result.parking_spaces[index].parking_space.tomereta == false) {
+                        if (data.result.parking_spaces[index].parking_space.monthly == true && data.result.parking_spaces[index].parking_space.OnlineParkingSystem == false) {
                             //Monthly parking
-                            data.result.parking_spaces[index].parking_type = tomeretaConfig.parking_types.monthly;
+                            data.result.parking_spaces[index].parking_type = OnlineParkingSystemConfig.parking_types.monthly;
                             data.result.parking_spaces[index].img = "img/icons/monthly.png";
                             results.monthly.push(data.result.parking_spaces[index]);
-                        } else if (data.result.parking_spaces[index].parking_space.monthly == false && data.result.parking_spaces[index].parking_space.tomereta == true) {
+                        } else if (data.result.parking_spaces[index].parking_space.monthly == false && data.result.parking_spaces[index].parking_space.OnlineParkingSystem == true) {
                             //Daily parking
-                            data.result.parking_spaces[index].parking_type = tomeretaConfig.parking_types.daily;
+                            data.result.parking_spaces[index].parking_type = OnlineParkingSystemConfig.parking_types.daily;
                             if (data.result.parking_spaces[index].parking_space.remaining == 0) {
                                 //Full Parking
-                                data.result.parking_spaces[index].parking_slot = tomeretaConfig.parking_slot.full;
+                                data.result.parking_spaces[index].parking_slot = OnlineParkingSystemConfig.parking_slot.full;
                                 data.result.parking_spaces[index].img = "img/icons/normal_gray.png";
                                 results.daily_full.push(data.result.parking_spaces[index]);
                             } else {
                                 //Empty Parking
-                                data.result.parking_spaces[index].parking_slot = tomeretaConfig.parking_slot.empty;
+                                data.result.parking_spaces[index].parking_slot = OnlineParkingSystemConfig.parking_slot.empty;
                                 data.result.parking_spaces[index].img = "img/icons/normal_blue.png";
                                 results.daily_empty.push(data.result.parking_spaces[index]);
                             }
-                        } else if (data.result.parking_spaces[index].parking_space.monthly == true && data.result.parking_spaces[index].parking_space.tomereta == true) {
+                        } else if (data.result.parking_spaces[index].parking_space.monthly == true && data.result.parking_spaces[index].parking_space.OnlineParkingSystem == true) {
                             //Daily Monthly parking
-                            data.result.parking_spaces[index].parking_type = tomeretaConfig.parking_types.daily_monthly;
+                            data.result.parking_spaces[index].parking_type = OnlineParkingSystemConfig.parking_types.daily_monthly;
                             if (data.result.parking_spaces[index].parking_space.remaining == 0) {
                                 //Full Parking
-                                data.result.parking_spaces[index].parking_slot = tomeretaConfig.parking_slot.full;
+                                data.result.parking_spaces[index].parking_slot = OnlineParkingSystemConfig.parking_slot.full;
                                 data.result.parking_spaces[index].img = "img/icons/normal_gray.png";
                                 results.daily_monthly_full.push(data.result.parking_spaces[index]);
                             } else {
                                 //Empty Parking
-                                data.result.parking_spaces[index].parking_slot = tomeretaConfig.parking_slot.empty;
+                                data.result.parking_spaces[index].parking_slot = OnlineParkingSystemConfig.parking_slot.empty;
                                 data.result.parking_spaces[index].img = "img/icons/normal_blue.png";
                                 results.daily_monthly_empty.push(data.result.parking_spaces[index]);
                             }
                         }
                     } else if (sp_flag == 1) {
                         //airport parking
-                        data.result.parking_spaces[index].parking_type = tomeretaConfig.parking_types.airport;
+                        data.result.parking_spaces[index].parking_type = OnlineParkingSystemConfig.parking_types.airport;
                         if (data.result.parking_spaces[index].parking_space.remaining == 0) {
                             //Full Parking
-                            data.result.parking_spaces[index].parking_slot = tomeretaConfig.parking_slot.full;
+                            data.result.parking_spaces[index].parking_slot = OnlineParkingSystemConfig.parking_slot.full;
                             data.result.parking_spaces[index].img = "img/icons/normal_gray.png";
                             results.airport_full.push(data.result.parking_spaces[index]);
                         } else {
                             //Empty Parking
-                            data.result.parking_spaces[index].parking_slot = tomeretaConfig.parking_slot.empty;
+                            data.result.parking_spaces[index].parking_slot = OnlineParkingSystemConfig.parking_slot.empty;
                             data.result.parking_spaces[index].img = "img/icons/normal_blue.png";
                             results.airport_empty.push(data.result.parking_spaces[index]);
                         }
                     } else if (sp_flag == 2) {
                         //Time rental parking
-                        data.result.parking_spaces[index].parking_type = tomeretaConfig.parking_types.time_rental;
+                        data.result.parking_spaces[index].parking_type = OnlineParkingSystemConfig.parking_types.time_rental;
                         if (data.result.parking_spaces[index].parking_space.remaining == 0) {
                             //Full Parking
-                            data.result.parking_spaces[index].parking_slot = tomeretaConfig.parking_slot.full;
+                            data.result.parking_spaces[index].parking_slot = OnlineParkingSystemConfig.parking_slot.full;
                             data.result.parking_spaces[index].img = "img/icons/dsp_red.png";
                             results.time_rental_full.push(data.result.parking_spaces[index]);
                         } else {
                             //Empty Parking
-                            data.result.parking_spaces[index].parking_slot = tomeretaConfig.parking_slot.empty;
+                            data.result.parking_spaces[index].parking_slot = OnlineParkingSystemConfig.parking_slot.empty;
                             data.result.parking_spaces[index].img = "img/icons/dsp_gray.png";
                             results.time_rental_empty.push(data.result.parking_spaces[index]);
                         }

@@ -12,7 +12,7 @@ var db = null; //Use for SQLite database.
 var tomedb = null; //Use for SQLite database.
 angular.module('starter', ['ionic','base64' ,'oauth1Client', 'ngMap', 'ionic-datepicker', 'ionic-multi-date-picker', 'ngIOS9UIWebViewPatch', 'starter.controllers', 'starter.services', 'starter.constant', 'ngMaterial', 'ngMessages', 'ngCordova']).run(function($ionicPlatform, $cordovaSQLite, $rootScope, $ionicHistory, $state, $mdDialog, $mdBottomSheet ) {
     function initialSQLite() {
-        db = window.cordova ? $cordovaSQLite.openDB("contract.db") : window.openDatabase("contract.db", "1.0", "IonicMaterialDesignDB", -1);
+        db = window.cordova ? $cordovaSQLite.openDB("contract.db") : window.openDatabase("contract.db", "1.0", "OnlineParkingSystemDB", -1);
         //Create database table of contracts by using sqlite database.
         //Table schema :
         //Column       Type      Primary key
@@ -26,7 +26,7 @@ angular.module('starter', ['ionic','base64' ,'oauth1Client', 'ngMap', 'ionic-dat
         //  age         Integer     No
         //  isEnable    Boolean     No
         $cordovaSQLite.execute(db, "CREATE TABLE IF NOT EXISTS contracts " + "( id           integer primary key   , " + "  firstName    text                  , " + "  lastName     text                  , " + "  telephone    text                  , " + "  email        text                  , " + "  note         text                  , " + "  createDate   dateTime              , " + "  age          integer               , " + "  isEnable     Boolean)                ");
-        tomedb = window.cordova ? $cordovaSQLite.openDB("tomereta.db") : window.openDatabase("tome.db", "1.0", "TomeretaDB", -1);
+        tomedb = window.cordova ? $cordovaSQLite.openDB("OnlineParkingSystem.db") : window.openDatabase("tome.db", "1.0", "OnlineParkingSystemDB", -1);
         //Favarite list--
         $cordovaSQLite.execute(db, "CREATE TABLE IF NOT EXISTS favorites_list " + "( id                       integer primary key   , " + "  ParkingId                integer               , " + "  Name                     text                  , " + "  Address                  text                  , " + "  imgUrl                   text                  , " + "  utilization_start_time   text                  , " + "  utilization_end_time     text                  , " + "  price                    integer               , " + "  vehicles_type            text                  , " + "  createDate               dateTime               ) ");
         //Browsing history list--
@@ -84,7 +84,7 @@ angular.module('starter', ['ionic','base64' ,'oauth1Client', 'ngMap', 'ionic-dat
 }).config(function($ionicConfigProvider, $httpProvider,$base64,ionicDatePickerProvider, $stateProvider, $urlRouterProvider, $mdThemingProvider, $mdIconProvider, $mdColorPalette, oauth1ClientProvider) {
    
 $httpProvider.defaults.useXDomain = true;
-   var auth = $base64.encode("tomereta:$#t0mereta");
+   var auth = $base64.encode("OnlineParkingSystem:$#t0mereta");
         //$httpProvider.defaults.headers.common['Authorization'] = 'Basic ' + auth;
         console.log(auth);
     var datePickerObj = {

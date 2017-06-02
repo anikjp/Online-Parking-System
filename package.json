@@ -1,7 +1,7 @@
 {
-  "name": "Tomereta",
+  "name": "OnlineParkingSystem",
   "version": "1.1.1",
-  "description": "Tomereta: An Ionic project",
+  "description": "OnlineParkingSystem: An Ionic project",
   "dependencies": {
     "gulp": "^3.5.6",
     "gulp-concat": "^2.2.0",
